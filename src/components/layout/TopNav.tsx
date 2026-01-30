@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/contexts/AuthContext";
+import avatarMale from "@/assets/avatar-male.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -187,7 +188,7 @@ export function TopNav({ onOpenCommand }: TopNavProps) {
                 <p className="text-xs text-muted-foreground capitalize">{user?.role || "Member"}</p>
               </div>
               <Avatar className="h-9 w-9 border border-border">
-                <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face" />
+                <AvatarImage src={avatarMale} />
                 <AvatarFallback className="bg-primary/10 text-primary">{userInitials}</AvatarFallback>
               </Avatar>
             </button>

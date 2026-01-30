@@ -63,6 +63,9 @@ const cities = [
   { name: "Pune", properties: "5,900+" },
 ];
 
+import avatarMale from "@/assets/avatar-male.png";
+import avatarFemale from "@/assets/avatar-female.png";
+
 const testimonials = [
   {
     quote: "REPitchBook has transformed how we evaluate deals. The AI scoring saved us from two bad investments last quarter alone.",
@@ -70,8 +73,7 @@ const testimonials = [
     role: "Real Estate Investor",
     company: "Kamle Investments",
     location: "Mumbai",
-    avatar: "VK",
-    gradient: "from-amber-500 to-orange-500",
+    avatarImg: avatarMale,
   },
   {
     quote: "My clients love the detailed reports. It adds credibility to every property I present and has increased my close rate by 40%.",
@@ -79,8 +81,7 @@ const testimonials = [
     role: "Senior Property Broker",
     company: "Prime Realty Group",
     location: "Bengaluru",
-    avatar: "PS",
-    gradient: "from-cyan-500 to-blue-500",
+    avatarImg: avatarFemale,
   },
   {
     quote: "The market intelligence features are incredible. We now have insights that previously required a full research team.",
@@ -88,8 +89,7 @@ const testimonials = [
     role: "Investment Analyst",
     company: "Horizon Capital",
     location: "Gurugram",
-    avatar: "AM",
-    gradient: "from-emerald-500 to-teal-500",
+    avatarImg: avatarMale,
   },
   {
     quote: "From land acquisition to commercial projects, REPitchBook handles it all. It's become essential to our due diligence process.",
@@ -97,8 +97,7 @@ const testimonials = [
     role: "Development Director",
     company: "Skyrise Developers",
     location: "Hyderabad",
-    avatar: "KR",
-    gradient: "from-violet-500 to-purple-500",
+    avatarImg: avatarFemale,
   },
 ];
 
@@ -775,9 +774,11 @@ export default function Landing() {
                 
                 {/* Author */}
                 <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-semibold text-sm shadow-lg`}>
-                    {testimonial.avatar}
-                  </div>
+                  <img 
+                    src={testimonial.avatarImg} 
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover shadow-lg"
+                  />
                   <div className="flex-1">
                     <div className="font-semibold text-foreground">{testimonial.name}</div>
                     <div className="text-sm text-muted-foreground">{testimonial.role}</div>
@@ -791,7 +792,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Decorative gradient */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r ${testimonial.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r from-primary to-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </motion.div>
           ))}

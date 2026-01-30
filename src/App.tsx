@@ -9,6 +9,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
+import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import AnalyzeDeal from "./pages/AnalyzeDeal";
 import DealResult from "./pages/DealResult";
@@ -31,6 +32,7 @@ const App = () => (
               {/* Public routes */}
               <Route path="/" element={<Landing />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/contact" element={<Contact />} />
 
               {/* Protected routes */}
               <Route

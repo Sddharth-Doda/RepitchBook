@@ -3,12 +3,12 @@ import { cn } from "@/lib/utils";
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
 
 const marketData = [
-  { name: "Manhattan, NY", medianPrice: "$1,245/sqft", rentalYield: "4.2%", trend: "up", demandScore: 94 },
-  { name: "Miami Beach, FL", medianPrice: "$892/sqft", rentalYield: "5.8%", trend: "up", demandScore: 89 },
-  { name: "Austin, TX", medianPrice: "$456/sqft", rentalYield: "6.1%", trend: "stable", demandScore: 82 },
-  { name: "San Francisco, CA", medianPrice: "$1,120/sqft", rentalYield: "3.9%", trend: "down", demandScore: 76 },
-  { name: "Boston, MA", medianPrice: "$785/sqft", rentalYield: "4.8%", trend: "up", demandScore: 85 },
-  { name: "Seattle, WA", medianPrice: "$642/sqft", rentalYield: "4.5%", trend: "stable", demandScore: 79 },
+  { name: "Bandra, Mumbai", medianPrice: "₹45,000/sqft", rentalYield: "3.2%", trend: "up", demandScore: 96 },
+  { name: "Whitefield, Bengaluru", medianPrice: "₹12,500/sqft", rentalYield: "4.8%", trend: "up", demandScore: 91 },
+  { name: "Golf Course Road, Gurugram", medianPrice: "₹18,000/sqft", rentalYield: "3.9%", trend: "up", demandScore: 88 },
+  { name: "Hitech City, Hyderabad", medianPrice: "₹9,800/sqft", rentalYield: "5.2%", trend: "stable", demandScore: 85 },
+  { name: "Koregaon Park, Pune", medianPrice: "₹15,500/sqft", rentalYield: "4.1%", trend: "up", demandScore: 82 },
+  { name: "Anna Nagar, Chennai", medianPrice: "₹11,200/sqft", rentalYield: "4.5%", trend: "stable", demandScore: 78 },
 ];
 
 const trendData = [

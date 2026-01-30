@@ -171,12 +171,6 @@ export default function Landing() {
             >
               Sign In
             </Button>
-            <Button 
-              onClick={() => navigate("/auth?mode=signup")} 
-              className="h-9 px-5 text-sm font-medium bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
-            >
-              Get Started
-            </Button>
           </div>
         </div>
       </motion.header>

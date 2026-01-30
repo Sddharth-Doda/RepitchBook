@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  TrendingUp,
   BarChart3,
   Shield,
   Zap,
@@ -18,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import heroRealEstate from "@/assets/hero-real-estate.jpg";
+import logoImage from "@/assets/logo.jpg";
 
 const features = [
   {
@@ -203,9 +203,7 @@ export default function Landing() {
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/25">
-              <TrendingUp className="h-4.5 w-4.5 text-primary-foreground" />
-            </div>
+            <img src={logoImage} alt="REPitchBook Logo" className="h-9 w-9 rounded-xl object-cover" />
             <span className="text-base font-semibold tracking-tight text-foreground">REPitchBook</span>
           </motion.div>
           <div className="flex items-center gap-2">
@@ -944,9 +942,7 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-                <TrendingUp className="h-3.5 w-3.5 text-primary-foreground" />
-              </div>
+              <img src={logoImage} alt="REPitchBook Logo" className="h-7 w-7 rounded-lg object-cover" />
               <span className="text-sm font-medium text-foreground">REPitchBook</span>
             </div>
             <p className="text-xs text-muted-foreground">

@@ -49,6 +49,45 @@ const cities = [
   { name: "Pune", properties: "5,900+" },
 ];
 
+const testimonials = [
+  {
+    quote: "REPitchBook has transformed how we evaluate deals. The AI scoring saved us from two bad investments last quarter alone.",
+    name: "Vineet Kamle",
+    role: "Real Estate Investor",
+    company: "Kamle Investments",
+    location: "Mumbai",
+    avatar: "VK",
+    gradient: "from-amber-500 to-orange-500",
+  },
+  {
+    quote: "My clients love the detailed reports. It adds credibility to every property I present and has increased my close rate by 40%.",
+    name: "Priya Sharma",
+    role: "Senior Property Broker",
+    company: "Prime Realty Group",
+    location: "Bengaluru",
+    avatar: "PS",
+    gradient: "from-cyan-500 to-blue-500",
+  },
+  {
+    quote: "The market intelligence features are incredible. We now have insights that previously required a full research team.",
+    name: "Arjun Mehta",
+    role: "Investment Analyst",
+    company: "Horizon Capital",
+    location: "Gurugram",
+    avatar: "AM",
+    gradient: "from-emerald-500 to-teal-500",
+  },
+  {
+    quote: "From land acquisition to commercial projects, REPitchBook handles it all. It's become essential to our due diligence process.",
+    name: "Kavitha Reddy",
+    role: "Development Director",
+    company: "Skyrise Developers",
+    location: "Hyderabad",
+    avatar: "KR",
+    gradient: "from-violet-500 to-purple-500",
+  },
+];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -468,6 +507,119 @@ export default function Landing() {
             </motion.div>
           </motion.div>
         </div>
+      </div>
+    </section>
+
+    {/* Testimonials Section */}
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <motion.div 
+          className="mx-auto max-w-2xl text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            Success Stories
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Trusted by Real Estate
+            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Professionals Across India
+            </span>
+          </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            See how leading investors, brokers, and analysts are making smarter decisions
+          </p>
+        </motion.div>
+
+        <motion.div 
+          className="grid gap-6 md:grid-cols-2"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              variants={itemVariants}
+              whileHover={{ y: -5, scale: 1.01 }}
+              className="group relative"
+            >
+              <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 h-full">
+                {/* Quote icon */}
+                <div className="absolute top-6 right-6 text-6xl font-serif text-primary/10 leading-none select-none">
+                  "
+                </div>
+                
+                {/* Quote */}
+                <p className="relative text-foreground/90 leading-relaxed mb-6 text-lg">
+                  "{testimonial.quote}"
+                </p>
+                
+                {/* Author */}
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-semibold text-sm shadow-lg`}>
+                    {testimonial.avatar}
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                    <div className="text-xs text-muted-foreground/70 flex items-center gap-1 mt-0.5">
+                      <span>{testimonial.company}</span>
+                      <span>•</span>
+                      <MapPin className="w-3 h-3" />
+                      <span>{testimonial.location}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Decorative gradient */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r ${testimonial.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Trust indicators */}
+        <motion.div 
+          className="mt-12 flex flex-wrap items-center justify-center gap-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="flex -space-x-2">
+              {["VK", "PS", "AM", "KR"].map((initials, i) => (
+                <div 
+                  key={initials} 
+                  className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-medium border-2 border-background"
+                  style={{ zIndex: 4 - i }}
+                >
+                  {initials}
+                </div>
+              ))}
+              <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-medium border-2 border-background">
+                +2K
+              </div>
+            </div>
+            <span className="text-sm">Join 2,400+ professionals</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="flex">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <svg key={star} className="w-5 h-5 text-amber-500 fill-amber-500" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <span className="text-sm text-muted-foreground">4.9/5 average rating</span>
+          </div>
+        </motion.div>
       </div>
     </section>
 

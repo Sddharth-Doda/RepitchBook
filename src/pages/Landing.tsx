@@ -242,35 +242,62 @@ export default function Landing() {
               <span className="text-foreground/80">Trusted by 2,400+ professionals across India</span>
             </motion.div>
             
-            {/* Headline */}
+            {/* Headline with Typing Animation */}
             <motion.h1 
               variants={itemVariants}
               className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl lg:leading-[1.1]"
             >
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                Turn Property Data into
-              </motion.span>
+              <span className="inline-flex flex-wrap justify-center">
+                {"Turn Property Data into".split("").map((char, index) => (
+                  <motion.span
+                    key={`line1-${index}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.03,
+                      delay: 0.3 + index * 0.04,
+                      ease: "easeOut"
+                    }}
+                    className={char === " " ? "mr-[0.25em]" : ""}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </span>
               <br />
-              <motion.span 
-                className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] inline-block"
-                initial={{ opacity: 0, y: 20, backgroundPosition: "0% 50%" }}
-                animate={{ 
-                  opacity: 1, 
-                  y: 0,
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                }}
-                transition={{ 
-                  opacity: { duration: 0.6, delay: 0.5 },
-                  y: { duration: 0.6, delay: 0.5 },
-                  backgroundPosition: { duration: 5, repeat: Infinity, ease: "linear" }
-                }}
-              >
-                Investor Intelligence
-              </motion.span>
+              <span className="inline-flex flex-wrap justify-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto]">
+                {"Investor Intelligence".split("").map((char, index) => (
+                  <motion.span
+                    key={`line2-${index}`}
+                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0, 
+                      scale: 1,
+                    }}
+                    transition={{ 
+                      duration: 0.04,
+                      delay: 1.2 + index * 0.05,
+                      ease: "easeOut"
+                    }}
+                    className={char === " " ? "mr-[0.25em]" : ""}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+                {/* Blinking Cursor */}
+                <motion.span
+                  className="inline-block w-[3px] h-[1em] bg-primary ml-1 align-middle"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 1, 1, 0] }}
+                  transition={{ 
+                    duration: 0.8, 
+                    repeat: Infinity,
+                    delay: 2.3,
+                    times: [0, 0.1, 0.5, 1]
+                  }}
+                />
+              </span>
             </motion.h1>
             
             {/* Subheadline */}

@@ -1,4 +1,5 @@
-import { LayoutDashboard, TrendingUp, FileText, BarChart3, Settings, Zap } from "lucide-react";
+import { LayoutDashboard, FileText, BarChart3, Settings, Zap } from "lucide-react";
+import logoImage from "@/assets/logo.jpg";
 import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -18,9 +19,7 @@ export function AppSidebar() {
       <div className="flex h-full flex-col">
         {/* Logo */}
         <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary shadow-glow">
-            <TrendingUp className="h-4 w-4 text-primary-foreground" />
-          </div>
+          <img src={logoImage} alt="REPitchBook Logo" className="h-8 w-8 rounded-lg object-cover" />
           <div className="flex flex-col">
             <span className="text-sm font-semibold text-foreground">REPitchBook</span>
             <span className="text-xs text-muted-foreground">AI Platform</span>

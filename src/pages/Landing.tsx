@@ -24,6 +24,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import heroRealEstate from "@/assets/hero-real-estate.jpg";
 
 const features = [
   {
@@ -273,83 +274,98 @@ export default function Landing() {
           </motion.div>
         </motion.div>
 
-        {/* Product Preview Mockup */}
+        {/* Hero Image with Product Preview Overlay */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-20 mx-auto max-w-4xl"
+          className="mt-20 mx-auto max-w-5xl"
         >
-          <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-xl p-6 shadow-2xl shadow-primary/10">
-            {/* Browser header */}
-            <div className="flex items-center gap-2 mb-4 pb-4 border-b border-border/50">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              </div>
-              <div className="flex-1 flex justify-center">
-                <div className="px-4 py-1 rounded-lg bg-muted/50 text-xs text-muted-foreground">
-                  repitchbook.ai/analyze
-                </div>
-              </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20">
+            {/* Hero Real Estate Image */}
+            <div className="relative">
+              <img 
+                src={heroRealEstate} 
+                alt="Modern luxury real estate building" 
+                className="w-full h-[400px] md:h-[500px] object-cover"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
             </div>
             
-            {/* Mockup content */}
-            <div className="grid md:grid-cols-3 gap-4">
-              {/* Property Card */}
-              <div className="rounded-xl bg-gradient-to-br from-muted/50 to-muted/30 p-4 border border-border/30">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <Building2 className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-foreground">Skyline Tower</div>
-                    <div className="text-xs text-muted-foreground flex items-center gap-1">
-                      <MapPin className="w-3 h-3" /> Bandra, Mumbai
+            {/* Floating Analytics Cards */}
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="grid md:grid-cols-3 gap-4">
+                {/* Property Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-border/50 shadow-lg"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-foreground">Skyline Tower</div>
+                      <div className="text-xs text-muted-foreground flex items-center gap-1">
+                        <MapPin className="w-3 h-3" /> Bandra, Mumbai
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground">Listed Price</span>
-                  <span className="font-semibold text-foreground">₹2.4 Cr</span>
-                </div>
-              </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-muted-foreground">Listed Price</span>
+                    <span className="font-semibold text-foreground">₹2.4 Cr</span>
+                  </div>
+                </motion.div>
 
-              {/* AI Score */}
-              <div className="rounded-xl bg-gradient-to-br from-success/10 to-emerald-500/5 p-4 border border-success/20">
-                <div className="text-xs text-muted-foreground mb-2">AI Investment Score</div>
-                <div className="flex items-end gap-2">
-                  <div className="text-3xl font-bold text-success">87</div>
-                  <div className="text-sm text-success/80 mb-1">/100</div>
-                </div>
-                <div className="mt-2 h-2 rounded-full bg-success/20 overflow-hidden">
-                  <motion.div 
-                    className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: "87%" }}
-                    transition={{ delay: 1.2, duration: 0.8 }}
-                  />
-                </div>
-              </div>
+                {/* AI Score */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.4, duration: 0.5 }}
+                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-success/30 shadow-lg"
+                >
+                  <div className="text-xs text-muted-foreground mb-2">AI Investment Score</div>
+                  <div className="flex items-end gap-2">
+                    <div className="text-3xl font-bold text-success">87</div>
+                    <div className="text-sm text-success/80 mb-1">/100</div>
+                  </div>
+                  <div className="mt-2 h-2 rounded-full bg-success/20 overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{ width: "87%" }}
+                      transition={{ delay: 1.8, duration: 0.8 }}
+                    />
+                  </div>
+                </motion.div>
 
-              {/* ROI Metrics */}
-              <div className="rounded-xl bg-gradient-to-br from-primary/10 to-accent/5 p-4 border border-primary/20">
-                <div className="text-xs text-muted-foreground mb-2">Projected Returns</div>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">5Y ROI</span>
-                    <span className="text-sm font-semibold text-primary">+42%</span>
+                {/* ROI Metrics */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.6, duration: 0.5 }}
+                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-primary/30 shadow-lg"
+                >
+                  <div className="text-xs text-muted-foreground mb-2">Projected Returns</div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-muted-foreground">5Y ROI</span>
+                      <span className="text-sm font-semibold text-primary">+42%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-muted-foreground">Rental Yield</span>
+                      <span className="text-sm font-semibold text-accent">3.8%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-muted-foreground">Risk Level</span>
+                      <span className="text-sm font-semibold text-success">Low</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Rental Yield</span>
-                    <span className="text-sm font-semibold text-accent">3.8%</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Risk Level</span>
-                    <span className="text-sm font-semibold text-success">Low</span>
-                  </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>

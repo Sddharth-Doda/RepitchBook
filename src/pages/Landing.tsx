@@ -207,10 +207,7 @@ export default function Landing() {
           <div className="flex items-center gap-2">
             <Button 
               variant="ghost" 
-              onClick={() => {
-                const footer = document.querySelector('footer');
-                footer?.scrollIntoView({ behavior: 'smooth' });
-              }} 
+              onClick={() => navigate("/contact")} 
               className="h-9 px-4 text-sm font-medium text-muted-foreground hover:text-foreground"
             >
               Contact Us

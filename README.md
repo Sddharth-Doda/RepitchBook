@@ -1,70 +1,146 @@
-# Welcome to your Lovable project
+# REPitchBook AI – Insights Platform
 
-## Project info
+REPitchBook AI is an **AI-powered real estate deal analysis platform** that helps investors, brokers, and real estate professionals evaluate property opportunities with clarity and confidence.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Instead of just generating pitch decks or static reports, REPitchBook AI focuses on **investment reasoning** — combining market intelligence, financial modeling, and risk analysis to produce actionable insights for real-world real estate decisions.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Key Features
 
-**Use Lovable**
+* **AI Deal Analysis** – Automatically evaluates real estate deals using financial metrics and market signals.
+* **Hyperlocal Market Insights** – Considers location-level trends, pricing signals, and demand indicators.
+* **Risk Scoring** – Identifies red flags, uncertainties, and downside risks in a deal.
+* **Investor-Ready Insights** – Outputs structured insights that can be directly used for investor discussions.
+* **Modern Frontend** – Clean, responsive UI built with modern frontend tools.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## What Makes This Different?
 
-**Use your preferred IDE**
+Most platforms focus on *presentation*. REPitchBook AI focuses on *reasoning*.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Instead of asking *“How does this look?”*, the platform answers:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* Is this deal actually worth investing in?
+* What assumptions are risky?
+* Where does this deal outperform or underperform the market?
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+##  Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Frontend
 
-# Step 3: Install the necessary dependencies.
-npm i
+* **React + TypeScript**
+* **Vite** for fast development
+* **Tailwind CSS** for modern UI styling
+* **Shadcn/UI** components
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Tooling
+
+* **Bun / npm** for package management
+* **ESLint** for code quality
+* **PostCSS** for styling support
+
+---
+
+##  Project Structure
+
+```
+repitchbook-ai-insights/
+├── public/            # Static assets
+├── src/
+│   ├── assets/        # Images & icons
+│   ├── components/    # Reusable UI components
+│   ├── pages/         # Application pages
+│   ├── App.tsx        # Root component
+│   └── main.tsx       # Entry point
+├── index.html
+├── package.json
+└── bun.lockb
+```
+
+---
+
+##  Setup & Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Sddharth-Doda/repitchbook-ai-insights.git
+cd repitchbook-ai-insights
+```
+
+### 2. Install dependencies
+
+```bash
+bun install
+# or
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+bun dev
+# or
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+##  Linting
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run lint
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Current Status
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* Frontend architecture ready
+* Core UI components implemented
+* AI reasoning & backend integration in progress
+* Market data & financial modeling logic under development
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Roadmap
 
-## Can I connect a custom domain to my Lovable project?
+* AI-powered deal scoring engine
+* Market comparison & benchmarking
+* Scenario-based ROI projections
+* Exportable investor insight reports
+* Authentication & user dashboards
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## Author
+
+**Siddharth Doda, Siddhant Pandey, Soumya Arora, Kaustubh Sadani**
+
+Building intelligent products at the intersection of **AI, data, and real-world decision making**.
 
 Yes, you can!
 

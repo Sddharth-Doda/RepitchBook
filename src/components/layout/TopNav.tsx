@@ -64,14 +64,41 @@ export function TopNav({ onOpenCommand }: TopNavProps) {
         <ThemeToggle />
 
         {/* Notifications */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="relative h-9 w-9 text-muted-foreground hover:text-foreground"
-        >
-          <Bell className="h-4 w-4" />
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative h-9 w-9 text-muted-foreground hover:text-foreground"
+            >
+              <Bell className="h-4 w-4" />
+              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-80">
+            <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="flex flex-col items-start gap-1 py-3">
+              <p className="text-sm font-medium">New deal analysis completed</p>
+              <p className="text-xs text-muted-foreground">Skyline Tower report is ready to view</p>
+              <p className="text-xs text-muted-foreground">2 minutes ago</p>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex flex-col items-start gap-1 py-3">
+              <p className="text-sm font-medium">Market update available</p>
+              <p className="text-xs text-muted-foreground">Mumbai real estate prices trending up</p>
+              <p className="text-xs text-muted-foreground">1 hour ago</p>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex flex-col items-start gap-1 py-3">
+              <p className="text-sm font-medium">Weekly report ready</p>
+              <p className="text-xs text-muted-foreground">Your portfolio summary for this week</p>
+              <p className="text-xs text-muted-foreground">Yesterday</p>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="justify-center text-primary">
+              View all notifications
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* User */}
         <DropdownMenu>

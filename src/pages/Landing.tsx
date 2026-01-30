@@ -14,16 +14,9 @@ import {
   PieChart,
   Home,
   Landmark,
-  HelpCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import heroRealEstate from "@/assets/hero-real-estate.jpg";
 
 const features = [
@@ -766,108 +759,6 @@ export default function Landing() {
               ))}
             </div>
           </div>
-        </motion.div>
-      </div>
-    </section>
-
-    {/* FAQ Section */}
-    <section className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-transparent to-transparent" />
-      <div className="relative mx-auto max-w-4xl px-6">
-        <motion.div 
-          className="mx-auto max-w-2xl text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 mb-4">
-            <HelpCircle className="w-6 h-6 text-primary" />
-          </div>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Frequently Asked Questions
-          </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            Everything you need to know about REPitchBook
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all duration-300">
-              <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
-                <span className="font-semibold">What types of properties can I analyze?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                REPitchBook supports all major property types including residential apartments, independent houses, commercial offices, retail spaces, land parcels, and pre-launch projects. Our AI models are trained on Indian market data covering 50+ cities.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2" className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all duration-300">
-              <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
-                <span className="font-semibold">How accurate is the AI investment score?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                Our AI investment score has a 97% accuracy rate, validated against historical transaction data. The score considers 40+ factors including location trends, rental yields, infrastructure development, and market sentiment. However, we always recommend using our analysis as one input in your overall due diligence process.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3" className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all duration-300">
-              <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
-                <span className="font-semibold">How often is the market data updated?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                Our market intelligence data is updated in real-time from multiple sources including property listings, government registrations, and developer announcements. Rental yield data is refreshed weekly, while macro indicators like infrastructure projects are updated monthly.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-4" className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all duration-300">
-              <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
-                <span className="font-semibold">Can I share reports with my clients?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                Yes! All investment reports can be exported as professional PDFs with your branding. Pro and Enterprise plans include white-label options, allowing brokers and consultants to share institutional-grade reports under their own company name.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-5" className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all duration-300">
-              <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
-                <span className="font-semibold">What's included in the free trial?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                The 14-day free trial includes full access to all Pro features: unlimited property analyses, AI investment scores, detailed reports, market intelligence dashboards, and risk assessments. No credit card required to start. At the end of your trial, you can choose a plan that fits your needs.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6" className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all duration-300">
-              <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
-                <span className="font-semibold">Is my data secure and confidential?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                Absolutely. We use bank-grade encryption (AES-256) for all data at rest and in transit. Your deal analyses are private and never shared with other users. We're compliant with Indian data protection regulations and undergo regular security audits.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </motion.div>
-
-        <motion.div 
-          className="mt-12 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <p className="text-muted-foreground">
-            Still have questions?{" "}
-            <button className="text-primary font-medium hover:underline underline-offset-4">
-              Contact our support team
-            </button>
-          </p>
         </motion.div>
       </div>
     </section>

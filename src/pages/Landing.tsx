@@ -757,41 +757,6 @@ export default function Landing() {
       </div>
     </section>
 
-      {/* CTA Section */}
-      <section className="py-24 relative">
-        <div className="mx-auto max-w-6xl px-6">
-          <motion.div 
-            className="mx-auto max-w-xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Ready to make smarter investments?
-            </h2>
-            <p className="mt-4 text-muted-foreground text-lg">
-              Join thousands of professionals using AI to gain a competitive edge in Indian real estate.
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button
-                size="lg"
-                onClick={() => navigate("/auth?mode=signup")}
-                className="group mt-8 h-14 gap-2 px-10 text-base font-semibold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] hover:bg-right shadow-xl shadow-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/40"
-              >
-                Get Started Free
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </motion.div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              No credit card required • Free 14-day trial
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="border-t border-border/50 py-8 relative">

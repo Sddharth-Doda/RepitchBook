@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 
 const riskData = [
   { category: "Market Volatility", level: 0.3 },
@@ -25,28 +24,20 @@ export function RiskHeatmap() {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 h-full">
+    <div className="rounded-xl border border-border bg-card p-6">
       <div className="mb-6">
         <h3 className="text-base font-semibold text-foreground">Risk Assessment</h3>
         <p className="mt-1 text-sm text-muted-foreground">Portfolio risk distribution by factor</p>
       </div>
-      <div className="space-y-4">
-        {riskData.map((item, index) => (
-          <motion.div 
-            key={item.category} 
-            className="flex items-center gap-4"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 * index, duration: 0.4 }}
-          >
-            <span className="w-28 text-sm text-muted-foreground truncate">{item.category}</span>
+      <div className="space-y-3">
+        {riskData.map((item) => (
+          <div key={item.category} className="flex items-center gap-4">
+            <span className="w-32 text-sm text-muted-foreground">{item.category}</span>
             <div className="flex-1">
-              <div className="h-2.5 overflow-hidden rounded-full bg-muted">
-                <motion.div
-                  className={cn("h-full rounded-full", getRiskColor(item.level))}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${item.level * 100}%` }}
-                  transition={{ delay: 0.2 + 0.1 * index, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              <div className="h-2 overflow-hidden rounded-full bg-muted">
+                <div
+                  className={cn("h-full rounded-full transition-all duration-500", getRiskColor(item.level))}
+                  style={{ width: `${item.level * 100}%` }}
                 />
               </div>
             </div>
@@ -56,7 +47,7 @@ export function RiskHeatmap() {
             )}>
               {getRiskLabel(item.level)}
             </span>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

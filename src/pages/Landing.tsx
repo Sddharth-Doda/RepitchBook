@@ -227,8 +227,30 @@ export default function Landing() {
       </motion.header>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32">
-        <div className="relative mx-auto max-w-6xl px-6">
+      <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 min-h-screen flex items-center">
+        {/* Background Image with Fade Effect */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.img 
+            src={heroRealEstate} 
+            alt="Modern luxury real estate" 
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+          />
+          {/* Multiple gradient overlays for smooth fade effect */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/70" />
+          {/* Subtle animated overlay */}
+          <motion.div 
+            className="absolute inset-0 bg-primary/5"
+            animate={{ opacity: [0.03, 0.08, 0.03] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-6 z-10">
           <motion.div 
             className="mx-auto max-w-3xl text-center"
             variants={containerVariants}
@@ -350,193 +372,8 @@ export default function Landing() {
           </motion.div>
         </motion.div>
 
-        {/* Hero Image with Product Preview Overlay */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
-          className="mt-20 mx-auto max-w-5xl"
-        >
-          <motion.div 
-            className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20"
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Hero Real Estate Image with Ken Burns Effect */}
-            <div className="relative overflow-hidden">
-              <motion.img 
-                src={heroRealEstate} 
-                alt="Modern luxury real estate building" 
-                className="w-full h-[400px] md:h-[500px] object-cover"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-              />
-              {/* Animated Gradient overlay */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"
-                animate={{ opacity: [0.8, 0.9, 0.8] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
-              
-              {/* Scanning Line Effect */}
-              <motion.div
-                className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
-                animate={{ y: [0, 500, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
-              />
-            </div>
-            
-            {/* Floating Analytics Cards */}
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="grid md:grid-cols-3 gap-4">
-                {/* Property Card */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20, x: -20 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6, type: "spring" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-border/50 shadow-lg cursor-pointer"
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <motion.div 
-                      className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <Building2 className="w-5 h-5 text-primary" />
-                    </motion.div>
-                    <div>
-                      <div className="text-sm font-medium text-foreground">Skyline Tower</div>
-                      <div className="text-xs text-muted-foreground flex items-center gap-1">
-                        <motion.span
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          <MapPin className="w-3 h-3" />
-                        </motion.span>
-                        Bandra, Mumbai
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Listed Price</span>
-                    <motion.span 
-                      className="font-semibold text-foreground"
-                      animate={{ opacity: [1, 0.7, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      ₹2.4 Cr
-                    </motion.span>
-                  </div>
-                </motion.div>
-
-                {/* AI Score */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-success/30 shadow-lg cursor-pointer relative overflow-hidden"
-                >
-                  {/* Shimmer effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-success/10 to-transparent -skew-x-12"
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
-                  />
-                  <div className="relative">
-                    <div className="text-xs text-muted-foreground mb-2">AI Investment Score</div>
-                    <div className="flex items-end gap-2">
-                      <motion.div 
-                        className="text-3xl font-bold text-success"
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1.8, type: "spring", stiffness: 200 }}
-                      >
-                        87
-                      </motion.div>
-                      <div className="text-sm text-success/80 mb-1">/100</div>
-                    </div>
-                    <div className="mt-2 h-2 rounded-full bg-success/20 overflow-hidden">
-                      <motion.div 
-                        className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full relative"
-                        initial={{ width: 0 }}
-                        animate={{ width: "87%" }}
-                        transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
-                      >
-                        <motion.div
-                          className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-r from-transparent to-white/30"
-                          animate={{ opacity: [0, 1, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, delay: 3 }}
-                        />
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* ROI Metrics */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20, x: 20 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ delay: 1.6, duration: 0.6, type: "spring" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-primary/30 shadow-lg cursor-pointer"
-                >
-                  <div className="text-xs text-muted-foreground mb-2">Projected Returns</div>
-                  <div className="space-y-2">
-                    <motion.div 
-                      className="flex justify-between items-center"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 2 }}
-                    >
-                      <span className="text-xs text-muted-foreground">5Y ROI</span>
-                      <motion.span 
-                        className="text-sm font-semibold text-primary"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: 2.5 }}
-                      >
-                        +42%
-                      </motion.span>
-                    </motion.div>
-                    <motion.div 
-                      className="flex justify-between items-center"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 2.2 }}
-                    >
-                      <span className="text-xs text-muted-foreground">Rental Yield</span>
-                      <span className="text-sm font-semibold text-accent">3.8%</span>
-                    </motion.div>
-                    <motion.div 
-                      className="flex justify-between items-center"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 2.4 }}
-                    >
-                      <span className="text-xs text-muted-foreground">Risk Level</span>
-                      <motion.span 
-                        className="text-sm font-semibold text-success flex items-center gap-1"
-                        animate={{ opacity: [1, 0.6, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <motion.span
-                          className="w-2 h-2 rounded-full bg-success"
-                          animate={{ scale: [1, 1.3, 1] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        />
-                        Low
-                      </motion.span>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
 
     {/* Cities Coverage */}
     <section className="py-12 border-y border-border/30">

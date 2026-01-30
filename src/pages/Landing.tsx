@@ -327,6 +327,150 @@ export default function Landing() {
       </div>
     </section>
 
+    {/* How It Works Section */}
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-transparent to-muted/20" />
+      <div className="relative mx-auto max-w-6xl px-6">
+        <motion.div 
+          className="mx-auto max-w-2xl text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            Simple & Powerful
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            How It Works
+          </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            Get institutional-grade property insights in three simple steps
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          {/* Connection line */}
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent hidden lg:block -translate-y-1/2" />
+          
+          <motion.div 
+            className="grid gap-8 lg:grid-cols-3"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {/* Step 1 */}
+            <motion.div 
+              variants={itemVariants}
+              className="relative group"
+            >
+              <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-amber-500/40 hover:shadow-xl hover:shadow-amber-500/10 h-full">
+                <div className="absolute -top-4 left-8 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold">
+                  Step 1
+                </div>
+                
+                <div className="mt-4 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30">
+                  <Building2 className="h-8 w-8 text-amber-500" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-foreground mb-3">Upload Property</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Enter property details — location, price, size, and type. Our system supports residential, commercial, and land investments.
+                </p>
+                
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium">Location</span>
+                  <span className="px-2 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium">Price</span>
+                  <span className="px-2 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-medium">Size</span>
+                </div>
+              </div>
+              
+              {/* Arrow connector */}
+              <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 items-center justify-center rounded-full bg-background border border-border">
+                <ArrowRight className="w-4 h-4 text-muted-foreground" />
+              </div>
+            </motion.div>
+
+            {/* Step 2 */}
+            <motion.div 
+              variants={itemVariants}
+              className="relative group"
+            >
+              <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10 h-full">
+                <div className="absolute -top-4 left-8 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-bold">
+                  Step 2
+                </div>
+                
+                <div className="mt-4 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30">
+                  <Sparkles className="h-8 w-8 text-cyan-500" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-foreground mb-3">AI Analysis</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our AI evaluates market trends, rental yields, risk factors, and growth potential using real-time data from across India.
+                </p>
+                
+                <div className="mt-6 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                    <span className="text-xs text-muted-foreground">Analyzing market data...</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" style={{ animationDelay: "0.2s" }} />
+                    <span className="text-xs text-muted-foreground">Computing risk score...</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: "0.4s" }} />
+                    <span className="text-xs text-muted-foreground">Generating insights...</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Arrow connector */}
+              <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 items-center justify-center rounded-full bg-background border border-border">
+                <ArrowRight className="w-4 h-4 text-muted-foreground" />
+              </div>
+            </motion.div>
+
+            {/* Step 3 */}
+            <motion.div 
+              variants={itemVariants}
+              className="relative group"
+            >
+              <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-500/10 h-full">
+                <div className="absolute -top-4 left-8 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold">
+                  Step 3
+                </div>
+                
+                <div className="mt-4 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30">
+                  <PieChart className="h-8 w-8 text-emerald-500" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-foreground mb-3">Get Report</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Receive a comprehensive investment report with AI score, ROI projections, risk analysis, and actionable recommendations.
+                </p>
+                
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
+                    <motion.div 
+                      className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5, duration: 1 }}
+                    />
+                  </div>
+                  <span className="text-xs font-semibold text-emerald-500">Report Ready</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+
       {/* Features Section */}
       <section className="py-24 relative">
         <div className="mx-auto max-w-6xl px-6">

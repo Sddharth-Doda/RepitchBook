@@ -234,9 +234,9 @@ export default function Landing() {
             src={heroRealEstate} 
             alt="Modern luxury real estate" 
             className="w-full h-full object-cover opacity-40 dark:opacity-25"
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.4 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           />
           {/* Soft gradient overlays for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />

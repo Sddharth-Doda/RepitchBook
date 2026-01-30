@@ -233,21 +233,14 @@ export default function Landing() {
           <motion.img 
             src={heroRealEstate} 
             alt="Modern luxury real estate" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-40 dark:opacity-25"
             initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            animate={{ scale: 1, opacity: 0.4 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           />
-          {/* Multiple gradient overlays for smooth fade effect */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/70" />
-          {/* Subtle animated overlay */}
-          <motion.div 
-            className="absolute inset-0 bg-primary/5"
-            animate={{ opacity: [0.03, 0.08, 0.03] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
+          {/* Soft gradient overlays for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6 z-10">

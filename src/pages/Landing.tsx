@@ -228,327 +228,308 @@ export default function Landing() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32">
-        <div className="relative mx-auto max-w-6xl px-6">
-          <motion.div 
-            className="mx-auto max-w-3xl text-center"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Badge */}
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Content - Offset from edge */}
             <motion.div 
-              variants={itemVariants}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm backdrop-blur-sm"
+              className="lg:col-span-6 lg:col-start-1"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
-              </span>
-              <span className="text-foreground/80">Trusted by 2,400+ professionals across India</span>
-            </motion.div>
-            
-            {/* Headline with Typing Animation */}
-            <motion.h1 
-              variants={itemVariants}
-              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl lg:leading-[1.1]"
-            >
-              <span className="inline-flex flex-wrap justify-center">
-                {"Turn Property Data into".split("").map((char, index) => (
-                  <motion.span
-                    key={`line1-${index}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ 
-                      duration: 0.03,
-                      delay: 0.3 + index * 0.04,
-                      ease: "easeOut"
-                    }}
-                    className={char === " " ? "mr-[0.25em]" : ""}
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-              </span>
-              <br />
-              <span className="inline-flex flex-wrap justify-center bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto]">
-                {"Investor Intelligence".split("").map((char, index) => (
-                  <motion.span
-                    key={`line2-${index}`}
-                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                    animate={{ 
-                      opacity: 1, 
-                      y: 0, 
-                      scale: 1,
-                    }}
-                    transition={{ 
-                      duration: 0.04,
-                      delay: 1.2 + index * 0.05,
-                      ease: "easeOut"
-                    }}
-                    className={char === " " ? "mr-[0.25em]" : ""}
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-                {/* Blinking Cursor */}
-                <motion.span
-                  className="inline-block w-[3px] h-[1em] bg-primary ml-1 align-middle"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 1, 1, 0] }}
-                  transition={{ 
-                    duration: 0.8, 
-                    repeat: Infinity,
-                    delay: 2.3,
-                    times: [0, 0.1, 0.5, 1]
-                  }}
-                />
-              </span>
-            </motion.h1>
-            
-            {/* Subheadline */}
-            <motion.p 
-              variants={itemVariants}
-              className="mt-6 text-lg text-muted-foreground sm:text-xl max-w-2xl mx-auto leading-relaxed"
-            >
-              AI-powered deal analysis for smarter real estate decisions. 
-              Evaluate properties, assess risk, and generate institutional-grade 
-              investment reports in seconds.
-            </motion.p>
-            
-            {/* CTAs */}
-            <motion.div 
-              variants={itemVariants}
-              className="mt-10 flex items-center justify-center"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => navigate("/auth?mode=signin")}
-                className="h-12 px-8 text-sm font-medium border-border/80 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300"
-              >
-                Sign In to Dashboard
-              </Button>
-            </motion.div>
-
-            {/* Quick Benefits */}
-            <motion.div 
-              variants={itemVariants}
-              className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3"
-            >
-            {benefits.map((benefit, index) => (
+              {/* Badge */}
               <motion.div 
-                key={benefit} 
-                className="flex items-center gap-2 text-sm text-muted-foreground"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
+                variants={itemVariants}
+                className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm backdrop-blur-sm"
               >
-                <CheckCircle2 className="h-4 w-4 text-success" />
-                <span>{benefit}</span>
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                </span>
+                <span className="text-foreground/80">Trusted by 2,400+ professionals across India</span>
               </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Hero Image with Product Preview Overlay */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
-          className="mt-20 mx-auto max-w-5xl"
-        >
-          <motion.div 
-            className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20"
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Hero Real Estate Image with Ken Burns Effect */}
-            <div className="relative overflow-hidden">
-              <motion.img 
-                src={heroRealEstate} 
-                alt="Modern luxury real estate building" 
-                className="w-full h-[400px] md:h-[500px] object-cover"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-              />
-              {/* Animated Gradient overlay */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"
-                animate={{ opacity: [0.8, 0.9, 0.8] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
               
-              {/* Scanning Line Effect */}
-              <motion.div
-                className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
-                animate={{ y: [0, 500, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
-              />
-            </div>
-            
-            {/* Floating Analytics Cards */}
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="grid md:grid-cols-3 gap-4">
-                {/* Property Card */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20, x: -20 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6, type: "spring" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-border/50 shadow-lg cursor-pointer"
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <motion.div 
-                      className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              {/* Headline with Typing Animation */}
+              <motion.h1 
+                variants={itemVariants}
+                className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl lg:leading-[1.1]"
+              >
+                <span className="inline-flex flex-wrap">
+                  {"Turn Property Data into".split("").map((char, index) => (
+                    <motion.span
+                      key={`line1-${index}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.03,
+                        delay: 0.3 + index * 0.04,
+                        ease: "easeOut"
+                      }}
+                      className={char === " " ? "mr-[0.25em]" : ""}
                     >
-                      <Building2 className="w-5 h-5 text-primary" />
-                    </motion.div>
-                    <div>
-                      <div className="text-sm font-medium text-foreground">Skyline Tower</div>
-                      <div className="text-xs text-muted-foreground flex items-center gap-1">
-                        <motion.span
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          <MapPin className="w-3 h-3" />
-                        </motion.span>
-                        Bandra, Mumbai
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Listed Price</span>
-                    <motion.span 
-                      className="font-semibold text-foreground"
-                      animate={{ opacity: [1, 0.7, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      ₹2.4 Cr
+                      {char === " " ? "\u00A0" : char}
                     </motion.span>
-                  </div>
-                </motion.div>
-
-                {/* AI Score */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-success/30 shadow-lg cursor-pointer relative overflow-hidden"
-                >
-                  {/* Shimmer effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-success/10 to-transparent -skew-x-12"
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                  ))}
+                </span>
+                <br />
+                <span className="inline-flex flex-wrap bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto]">
+                  {"Investor Intelligence".split("").map((char, index) => (
+                    <motion.span
+                      key={`line2-${index}`}
+                      initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                      animate={{ 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                      }}
+                      transition={{ 
+                        duration: 0.04,
+                        delay: 1.2 + index * 0.05,
+                        ease: "easeOut"
+                      }}
+                      className={char === " " ? "mr-[0.25em]" : ""}
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                  {/* Blinking Cursor */}
+                  <motion.span
+                    className="inline-block w-[3px] h-[1em] bg-primary ml-1 align-middle"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 1, 1, 0] }}
+                    transition={{ 
+                      duration: 0.8, 
+                      repeat: Infinity,
+                      delay: 2.3,
+                      times: [0, 0.1, 0.5, 1]
+                    }}
                   />
-                  <div className="relative">
-                    <div className="text-xs text-muted-foreground mb-2">AI Investment Score</div>
-                    <div className="flex items-end gap-2">
+                </span>
+              </motion.h1>
+              
+              {/* Subheadline */}
+              <motion.p 
+                variants={itemVariants}
+                className="mt-6 text-lg text-muted-foreground sm:text-xl max-w-xl leading-relaxed"
+              >
+                AI-powered deal analysis for smarter real estate decisions. 
+                Evaluate properties, assess risk, and generate institutional-grade 
+                investment reports in seconds.
+              </motion.p>
+              
+              {/* CTAs */}
+              <motion.div 
+                variants={itemVariants}
+                className="mt-10 flex items-start"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => navigate("/auth?mode=signin")}
+                  className="h-12 px-8 text-sm font-medium border-border/80 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300"
+                >
+                  Sign In to Dashboard
+                </Button>
+              </motion.div>
+
+              {/* Quick Benefits - Stacked */}
+              <motion.div 
+                variants={itemVariants}
+                className="mt-12 flex flex-col gap-3"
+              >
+                {benefits.map((benefit, index) => (
+                  <motion.div 
+                    key={benefit} 
+                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                  >
+                    <CheckCircle2 className="h-4 w-4 text-success" />
+                    <span>{benefit}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side - Hero Visual */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
+              className="lg:col-span-6 lg:col-start-7"
+            >
+              <motion.div 
+                className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20"
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Hero Real Estate Image with Ken Burns Effect */}
+                <div className="relative overflow-hidden">
+                  <motion.img 
+                    src={heroRealEstate} 
+                    alt="Modern luxury real estate building" 
+                    className="w-full h-[400px] lg:h-[520px] object-cover"
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  {/* Animated Gradient overlay */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"
+                    animate={{ opacity: [0.8, 0.9, 0.8] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
+                  
+                  {/* Scanning Line Effect */}
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+                    animate={{ y: [0, 520, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+                  />
+                </div>
+                
+                {/* Floating Analytics Cards - Staggered */}
+                <div className="absolute bottom-4 left-4 right-4 lg:bottom-6 lg:left-6 lg:right-6">
+                  <div className="flex flex-col gap-3">
+                    {/* Top Row - Two cards */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Property Card */}
                       <motion.div 
-                        className="text-3xl font-bold text-success"
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1.8, type: "spring", stiffness: 200 }}
+                        initial={{ opacity: 0, y: 20, x: -20 }}
+                        animate={{ opacity: 1, y: 0, x: 0 }}
+                        transition={{ delay: 1.2, duration: 0.6, type: "spring" }}
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        className="rounded-xl bg-card/90 backdrop-blur-xl p-3 lg:p-4 border border-border/50 shadow-lg cursor-pointer"
                       >
-                        87
+                        <div className="flex items-center gap-2 mb-2">
+                          <motion.div 
+                            className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
+                            animate={{ rotate: [0, 5, -5, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                            <Building2 className="w-4 h-4 lg:w-5 lg:h-5 text-primary" />
+                          </motion.div>
+                          <div>
+                            <div className="text-xs lg:text-sm font-medium text-foreground">Skyline Tower</div>
+                            <div className="text-[10px] lg:text-xs text-muted-foreground flex items-center gap-1">
+                              <MapPin className="w-2.5 h-2.5 lg:w-3 lg:h-3" />
+                              Bandra, Mumbai
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="text-muted-foreground">Listed</span>
+                          <motion.span 
+                            className="font-semibold text-foreground"
+                            animate={{ opacity: [1, 0.7, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          >
+                            ₹2.4 Cr
+                          </motion.span>
+                        </div>
                       </motion.div>
-                      <div className="text-sm text-success/80 mb-1">/100</div>
-                    </div>
-                    <div className="mt-2 h-2 rounded-full bg-success/20 overflow-hidden">
+
+                      {/* AI Score */}
                       <motion.div 
-                        className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full relative"
-                        initial={{ width: 0 }}
-                        animate={{ width: "87%" }}
-                        transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
+                        whileHover={{ y: -5, scale: 1.02 }}
+                        className="rounded-xl bg-card/90 backdrop-blur-xl p-3 lg:p-4 border border-success/30 shadow-lg cursor-pointer relative overflow-hidden"
                       >
                         <motion.div
-                          className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-r from-transparent to-white/30"
-                          animate={{ opacity: [0, 1, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, delay: 3 }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-success/10 to-transparent -skew-x-12"
+                          animate={{ x: ["-100%", "200%"] }}
+                          transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
                         />
+                        <div className="relative">
+                          <div className="text-[10px] lg:text-xs text-muted-foreground mb-1">AI Score</div>
+                          <div className="flex items-end gap-1">
+                            <motion.div 
+                              className="text-2xl lg:text-3xl font-bold text-success"
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 1.8, type: "spring", stiffness: 200 }}
+                            >
+                              87
+                            </motion.div>
+                            <div className="text-xs lg:text-sm text-success/80 mb-1">/100</div>
+                          </div>
+                          <div className="mt-1.5 h-1.5 rounded-full bg-success/20 overflow-hidden">
+                            <motion.div 
+                              className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: "87%" }}
+                              transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
+                            />
+                          </div>
+                        </div>
                       </motion.div>
                     </div>
-                  </div>
-                </motion.div>
 
-                {/* ROI Metrics */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20, x: 20 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ delay: 1.6, duration: 0.6, type: "spring" }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-primary/30 shadow-lg cursor-pointer"
-                >
-                  <div className="text-xs text-muted-foreground mb-2">Projected Returns</div>
-                  <div className="space-y-2">
+                    {/* Bottom Card - Full width ROI */}
                     <motion.div 
-                      className="flex justify-between items-center"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 2 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.6, duration: 0.6, type: "spring" }}
+                      whileHover={{ y: -3, scale: 1.01 }}
+                      className="rounded-xl bg-card/90 backdrop-blur-xl p-3 lg:p-4 border border-primary/30 shadow-lg cursor-pointer"
                     >
-                      <span className="text-xs text-muted-foreground">5Y ROI</span>
-                      <motion.span 
-                        className="text-sm font-semibold text-primary"
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: 2.5 }}
-                      >
-                        +42%
-                      </motion.span>
-                    </motion.div>
-                    <motion.div 
-                      className="flex justify-between items-center"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 2.2 }}
-                    >
-                      <span className="text-xs text-muted-foreground">Rental Yield</span>
-                      <span className="text-sm font-semibold text-accent">3.8%</span>
-                    </motion.div>
-                    <motion.div 
-                      className="flex justify-between items-center"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 2.4 }}
-                    >
-                      <span className="text-xs text-muted-foreground">Risk Level</span>
-                      <motion.span 
-                        className="text-sm font-semibold text-success flex items-center gap-1"
-                        animate={{ opacity: [1, 0.6, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <motion.span
-                          className="w-2 h-2 rounded-full bg-success"
-                          animate={{ scale: [1, 1.3, 1] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        />
-                        Low
-                      </motion.span>
+                      <div className="flex items-center justify-between">
+                        <div className="text-[10px] lg:text-xs text-muted-foreground">Projected Returns</div>
+                        <div className="flex items-center gap-4 lg:gap-6">
+                          <div className="text-center">
+                            <div className="text-xs text-muted-foreground">5Y ROI</div>
+                            <motion.div 
+                              className="text-sm lg:text-base font-semibold text-primary"
+                              animate={{ scale: [1, 1.05, 1] }}
+                              transition={{ duration: 2, repeat: Infinity, delay: 2.5 }}
+                            >
+                              +42%
+                            </motion.div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-xs text-muted-foreground">Yield</div>
+                            <div className="text-sm lg:text-base font-semibold text-accent">3.8%</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-xs text-muted-foreground">Risk</div>
+                            <motion.div 
+                              className="text-sm lg:text-base font-semibold text-success flex items-center gap-1"
+                              animate={{ opacity: [1, 0.6, 1] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              <motion.span
+                                className="w-1.5 h-1.5 rounded-full bg-success"
+                                animate={{ scale: [1, 1.3, 1] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                              />
+                              Low
+                            </motion.div>
+                          </div>
+                        </div>
+                      </div>
                     </motion.div>
                   </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-    {/* Cities Coverage */}
-    <section className="py-12 border-y border-border/30">
-      <div className="mx-auto max-w-6xl px-6">
+    {/* Cities Coverage - Full width spread */}
+    <section className="py-12 border-y border-border/30 overflow-hidden">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
+          className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <span className="text-sm text-muted-foreground whitespace-nowrap">Covering properties in</span>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <span className="text-sm text-muted-foreground whitespace-nowrap lg:w-48">Covering properties in</span>
+          <div className="flex flex-wrap items-center gap-3 lg:gap-4 flex-1 lg:justify-end">
             {cities.map((city, index) => (
               <motion.div 
                 key={city.name}
@@ -556,9 +537,9 @@ export default function Landing() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-muted/50 border border-border/50"
               >
-                <MapPin className="w-3 h-3 text-primary" />
+                <MapPin className="w-3.5 h-3.5 text-primary" />
                 <span className="text-sm font-medium text-foreground">{city.name}</span>
                 <span className="text-xs text-muted-foreground">({city.properties})</span>
               </motion.div>
@@ -722,81 +703,87 @@ export default function Landing() {
       </div>
     </section>
 
-    {/* Testimonials Section */}
+    {/* Testimonials Section - Asymmetric layout */}
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
-      <div className="relative mx-auto max-w-6xl px-6">
-        <motion.div 
-          className="mx-auto max-w-2xl text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-            Success Stories
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Trusted by Real Estate
-            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Professionals Across India
-            </span>
-          </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            See how leading investors, brokers, and analysts are making smarter decisions
-          </p>
-        </motion.div>
+      <div className="relative mx-auto max-w-[1600px] px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Left - Header content */}
+          <motion.div 
+            className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+              Success Stories
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Trusted by Real Estate
+              <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Professionals Across India
+              </span>
+            </h2>
+            <p className="mt-4 text-muted-foreground text-lg">
+              See how leading investors, brokers, and analysts are making smarter decisions
+            </p>
+          </motion.div>
 
-        <motion.div 
-          className="grid gap-6 md:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              variants={itemVariants}
-              whileHover={{ y: -5, scale: 1.01 }}
-              className="group relative"
-            >
-              <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 h-full">
-                {/* Quote icon */}
-                <div className="absolute top-6 right-6 text-6xl font-serif text-primary/10 leading-none select-none">
-                  "
-                </div>
-                
-                {/* Quote */}
-                <p className="relative text-foreground/90 leading-relaxed mb-6 text-lg">
-                  "{testimonial.quote}"
-                </p>
-                
-                {/* Author */}
-                <div className="flex items-center gap-4">
-                  <img 
-                    src={testimonial.avatarImg} 
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover shadow-lg"
-                  />
-                  <div className="flex-1">
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <div className="text-xs text-muted-foreground/70 flex items-center gap-1 mt-0.5">
-                      <span>{testimonial.company}</span>
-                      <span>•</span>
-                      <MapPin className="w-3 h-3" />
-                      <span>{testimonial.location}</span>
+          {/* Right - Testimonials grid */}
+          <motion.div 
+            className="lg:col-span-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="grid gap-6 sm:grid-cols-2">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.name}
+                  variants={itemVariants}
+                  whileHover={{ y: -5, scale: 1.01 }}
+                  className={`group relative ${index === 0 ? 'sm:translate-y-0' : index === 1 ? 'sm:translate-y-8' : index === 2 ? 'sm:translate-y-4' : 'sm:translate-y-12'}`}
+                >
+                  <div className="relative rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 lg:p-8 transition-all duration-500 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 h-full">
+                    {/* Quote icon */}
+                    <div className="absolute top-4 right-4 lg:top-6 lg:right-6 text-5xl lg:text-6xl font-serif text-primary/10 leading-none select-none">
+                      "
                     </div>
+                    
+                    {/* Quote */}
+                    <p className="relative text-foreground/90 leading-relaxed mb-6 text-base lg:text-lg">
+                      "{testimonial.quote}"
+                    </p>
+                    
+                    {/* Author */}
+                    <div className="flex items-center gap-3 lg:gap-4">
+                      <img 
+                        src={testimonial.avatarImg} 
+                        alt={testimonial.name}
+                        className="w-10 h-10 lg:w-12 lg:h-12 rounded-full object-cover shadow-lg"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-foreground text-sm lg:text-base">{testimonial.name}</div>
+                        <div className="text-xs lg:text-sm text-muted-foreground truncate">{testimonial.role}</div>
+                        <div className="text-[10px] lg:text-xs text-muted-foreground/70 flex items-center gap-1 mt-0.5">
+                          <span className="truncate">{testimonial.company}</span>
+                          <span>•</span>
+                          <MapPin className="w-2.5 h-2.5 lg:w-3 lg:h-3 flex-shrink-0" />
+                          <span>{testimonial.location}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Decorative gradient */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r from-primary to-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                </div>
-                
-                {/* Decorative gradient */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl bg-gradient-to-r from-primary to-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
         {/* Trust indicators */}
         <motion.div 
@@ -837,53 +824,59 @@ export default function Landing() {
       </div>
     </section>
 
-      {/* Features Section */}
+      {/* Features Section - Full bleed asymmetric */}
       <section className="py-24 relative">
-        <div className="mx-auto max-w-6xl px-6">
-          <motion.div 
-            className="mx-auto max-w-2xl text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Everything you need to make
-              <br />
-              <span className="text-primary">confident investment decisions</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground text-lg">
-              Institutional-grade tools designed for modern real estate professionals.
-            </p>
-          </motion.div>
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+            {/* Features Cards - Take most space */}
+            <motion.div 
+              className="lg:col-span-8 order-2 lg:order-1"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    variants={itemVariants}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className={`group relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 lg:p-8 transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden ${index === 1 ? 'lg:translate-y-8' : ''}`}
+                  >
+                    {/* Gradient glow effect */}
+                    <div className={`absolute -top-20 -right-20 w-40 h-40 ${feature.bgGlow} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                    
+                    <div className="relative">
+                      <div className={`mb-6 inline-flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl bg-gradient-to-br ${feature.gradient} shadow-lg`}>
+                        <feature.icon className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
+                      </div>
+                      <h3 className="mb-3 text-lg lg:text-xl font-semibold text-foreground">{feature.title}</h3>
+                      <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-          <motion.div 
-            className="grid gap-6 lg:grid-cols-3"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-8 transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20 overflow-hidden"
-              >
-                {/* Gradient glow effect */}
-                <div className={`absolute -top-20 -right-20 w-40 h-40 ${feature.bgGlow} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
-                <div className="relative">
-                  <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${feature.gradient} shadow-lg`}>
-                    <feature.icon className="h-7 w-7 text-white" />
-                  </div>
-                  <h3 className="mb-3 text-xl font-semibold text-foreground">{feature.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+            {/* Header - Right side on desktop */}
+            <motion.div 
+              className="lg:col-span-4 order-1 lg:order-2 lg:sticky lg:top-32 lg:self-start"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Everything you need to make
+                <br />
+                <span className="text-primary">confident investment decisions</span>
+              </h2>
+              <p className="mt-4 text-muted-foreground text-lg">
+                Institutional-grade tools designed for modern real estate professionals.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 

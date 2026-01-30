@@ -21,12 +21,6 @@ const features = [
   },
 ];
 
-const demoAccounts = [
-  { email: "investor@repitch.ai", role: "Investor" },
-  { email: "broker@repitch.ai", role: "Broker" },
-  { email: "analyst@repitch.ai", role: "Analyst" },
-];
-
 export default function Landing() {
   const navigate = useNavigate();
 
@@ -112,30 +106,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Demo Accounts Section */}
-      <section className="border-t border-border bg-muted/20 py-16">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-xl font-semibold text-foreground">Demo Access</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Try the platform with our demo accounts. Password for all: <code className="rounded bg-muted px-2 py-0.5 text-xs font-mono text-foreground">demo123</code>
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {demoAccounts.map((account) => (
-                <div
-                  key={account.email}
-                  className="rounded-lg border border-border bg-card p-4 text-left"
-                >
-                  <div className="mb-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                    {account.role}
-                  </div>
-                  <div className="font-mono text-xs text-foreground">{account.email}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Trust Section */}
       <section className="py-20">

@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { title: "Dashboard", href: "/", icon: LayoutDashboard },
+  { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { title: "Analyze Deal", href: "/analyze", icon: Zap, primary: true },
   { title: "Reports", href: "/reports", icon: FileText },
   { title: "Market Insights", href: "/insights", icon: BarChart3 },

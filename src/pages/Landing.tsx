@@ -1,0 +1,206 @@
+import { useNavigate } from "react-router-dom";
+import { TrendingUp, BarChart3, Shield, Zap, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const features = [
+  {
+    icon: Zap,
+    title: "AI-Powered Analysis",
+    description: "Instant investment scoring powered by machine learning models trained on millions of transactions.",
+  },
+  {
+    icon: BarChart3,
+    title: "Market Intelligence",
+    description: "Real-time market data, rental yields, and demand trends across 200+ metropolitan areas.",
+  },
+  {
+    icon: Shield,
+    title: "Risk Assessment",
+    description: "Comprehensive risk modeling with scenario analysis and stress testing capabilities.",
+  },
+];
+
+const demoAccounts = [
+  { email: "investor@repitch.ai", role: "Investor" },
+  { email: "broker@repitch.ai", role: "Broker" },
+  { email: "analyst@repitch.ai", role: "Analyst" },
+];
+
+export default function Landing() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary shadow-glow">
+              <TrendingUp className="h-5 w-5 text-primary-foreground" />
+            </div>
+            <span className="text-lg font-semibold text-foreground">REPitchBook AI</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button variant="ghost" onClick={() => navigate("/auth?mode=signin")}>
+              Sign In
+            </Button>
+            <Button onClick={() => navigate("/auth?mode=signup")} className="bg-gradient-primary shadow-glow">
+              Get Started
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-32 pb-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-success animate-pulse" />
+              Trusted by 2,400+ real estate professionals
+            </div>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Turn Property Data into{" "}
+              <span className="text-gradient-primary">Investor Intelligence</span>
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+              AI-powered deal analysis for smarter real estate decisions. Evaluate properties, 
+              assess risk, and generate institutional-grade investment reports in seconds.
+            </p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button
+                size="lg"
+                onClick={() => navigate("/auth?mode=signup")}
+                className="h-12 gap-2 bg-gradient-primary px-8 text-base shadow-glow"
+              >
+                Start Analyzing Deals
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => navigate("/auth?mode=signin")}
+                className="h-12 px-8 text-base"
+              >
+                Sign In to Dashboard
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-8 md:grid-cols-3">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="group rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mb-2 text-xl font-semibold text-foreground">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Accounts Section */}
+      <section className="border-t border-border bg-muted/30 py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-semibold text-foreground">Demo Access</h2>
+            <p className="mt-2 text-muted-foreground">
+              Try the platform with our demo accounts. Password for all: <code className="rounded bg-muted px-2 py-0.5 text-sm font-mono text-foreground">demo123</code>
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {demoAccounts.map((account) => (
+                <div
+                  key={account.email}
+                  className="rounded-xl border border-border bg-card p-4 text-left"
+                >
+                  <div className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    {account.role}
+                  </div>
+                  <div className="font-mono text-sm text-foreground">{account.email}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="rounded-2xl border border-border bg-gradient-surface p-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold text-foreground">
+                Institutional-Grade Analysis
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                The same analytical rigor used by top real estate investment firms, now accessible to every professional.
+              </p>
+              <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                {[
+                  { value: "$14B+", label: "Deals Analyzed" },
+                  { value: "97%", label: "Accuracy Rate" },
+                  { value: "2.4s", label: "Avg. Analysis Time" },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <div className="text-3xl font-bold text-gradient-primary">{stat.value}</div>
+                    <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="border-t border-border py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-foreground">
+              Ready to make smarter investments?
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Join thousands of professionals using AI to gain a competitive edge.
+            </p>
+            <Button
+              size="lg"
+              onClick={() => navigate("/auth?mode=signup")}
+              className="mt-8 h-12 gap-2 bg-gradient-primary px-8 text-base shadow-glow"
+            >
+              Get Started Free
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-8">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="h-5 w-5 text-primary" />
+              <span className="font-semibold text-foreground">REPitchBook AI</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              © 2024 REPitchBook. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

@@ -218,9 +218,8 @@ export default function Landing() {
             </Button>
             <ThemeToggle />
             <Button 
-              variant="ghost" 
               onClick={() => navigate("/auth?mode=signin")} 
-              className="h-9 px-4 text-sm font-medium text-muted-foreground hover:text-foreground"
+              className="h-9 bg-gradient-primary px-5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
               Sign In
             </Button>

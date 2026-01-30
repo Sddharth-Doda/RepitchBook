@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 20% 98%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 226 70% 55%;
+    --primary: 226 60% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 220 14% 96%;
@@ -24,111 +24,116 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    --accent: 187 80% 45%;
+    --accent: 199 70% 45%;
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 226 70% 55%;
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 226 60% 50%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --success: 142 70% 45%;
+    --success: 152 60% 40%;
     --success-foreground: 210 40% 98%;
     
-    --warning: 38 92% 50%;
+    --warning: 38 80% 50%;
     --warning-foreground: 222 47% 11%;
 
-    --chart-1: 226 70% 55%;
-    --chart-2: 187 80% 45%;
-    --chart-3: 142 70% 45%;
-    --chart-4: 38 92% 50%;
-    --chart-5: 280 65% 60%;
+    --chart-1: 226 60% 50%;
+    --chart-2: 199 70% 45%;
+    --chart-3: 152 60% 40%;
+    --chart-4: 38 80% 50%;
+    --chart-5: 280 50% 55%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(226 70% 55%) 0%, hsl(260 65% 55%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(187 80% 45%) 0%, hsl(200 80% 50%) 100%);
-    --gradient-surface: linear-gradient(180deg, hsl(220 14% 96%) 0%, hsl(220 14% 98%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(226 70% 55% / 0.1) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(226 60% 50%) 0%, hsl(240 55% 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 70% 45%) 0%, hsl(210 70% 50%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(220 14% 97%) 0%, hsl(220 14% 99%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(226 60% 50% / 0.08) 0%, transparent 70%);
 
-    --shadow-sm: 0 1px 2px hsl(220 13% 91% / 0.5);
-    --shadow-md: 0 4px 12px hsl(220 13% 91% / 0.6);
-    --shadow-lg: 0 8px 24px hsl(220 13% 91% / 0.7);
-    --shadow-glow: 0 0 40px hsl(226 70% 55% / 0.15);
+    --shadow-sm: 0 1px 2px hsl(220 13% 80% / 0.4);
+    --shadow-md: 0 4px 12px hsl(220 13% 80% / 0.5);
+    --shadow-lg: 0 8px 24px hsl(220 13% 80% / 0.6);
+    --shadow-glow: 0 0 30px hsl(226 60% 50% / 0.12);
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 9% 46%;
-    --sidebar-primary: 226 70% 55%;
+    --sidebar-primary: 226 60% 50%;
     --sidebar-primary-foreground: 210 40% 98%;
     --sidebar-accent: 220 14% 96%;
     --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 226 70% 55%;
+    --sidebar-border: 220 13% 90%;
+    --sidebar-ring: 226 60% 50%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    /* Premium deep navy/charcoal palette */
+    --background: 222 30% 7%;
+    --foreground: 210 20% 96%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 222 28% 9%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 222 47% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 222 28% 11%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 226 70% 55%;
+    --primary: 220 55% 55%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 25% 14%;
+    --secondary-foreground: 210 20% 90%;
 
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 220 25% 12%;
+    --muted-foreground: 220 15% 50%;
 
-    --accent: 187 80% 45%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 199 60% 50%;
+    --accent-foreground: 222 30% 7%;
 
-    --destructive: 0 62% 50%;
+    --destructive: 0 55% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 226 70% 55%;
+    --border: 220 20% 16%;
+    --input: 220 20% 16%;
+    --ring: 220 55% 55%;
 
-    /* Custom tokens */
-    --success: 142 70% 45%;
+    /* Refined semantic tokens */
+    --success: 152 55% 45%;
     --success-foreground: 210 40% 98%;
     
-    --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 6%;
+    --warning: 38 75% 55%;
+    --warning-foreground: 222 30% 7%;
 
-    --chart-1: 226 70% 55%;
-    --chart-2: 187 80% 45%;
-    --chart-3: 142 70% 45%;
-    --chart-4: 38 92% 50%;
-    --chart-5: 280 65% 60%;
+    /* Muted, professional chart colors */
+    --chart-1: 220 55% 55%;
+    --chart-2: 199 50% 50%;
+    --chart-3: 152 50% 45%;
+    --chart-4: 38 65% 55%;
+    --chart-5: 270 40% 55%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(226 70% 55%) 0%, hsl(260 65% 55%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(187 80% 45%) 0%, hsl(200 80% 50%) 100%);
-    --gradient-surface: linear-gradient(180deg, hsl(222 47% 10%) 0%, hsl(222 47% 8%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(226 70% 55% / 0.15) 0%, transparent 70%);
+    /* Subtle, refined gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 55% 55%) 0%, hsl(240 50% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 50% 50%) 0%, hsl(210 55% 50%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(222 28% 11%) 0%, hsl(222 28% 9%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(220 55% 55% / 0.1) 0%, transparent 70%);
 
-    --shadow-sm: 0 1px 2px hsl(222 47% 3% / 0.3);
-    --shadow-md: 0 4px 12px hsl(222 47% 3% / 0.4);
-    --shadow-lg: 0 8px 24px hsl(222 47% 3% / 0.5);
-    --shadow-glow: 0 0 40px hsl(226 70% 55% / 0.2);
+    /* Deep, subtle shadows */
+    --shadow-sm: 0 1px 2px hsl(222 30% 3% / 0.4);
+    --shadow-md: 0 4px 12px hsl(222 30% 3% / 0.5);
+    --shadow-lg: 0 8px 24px hsl(222 30% 3% / 0.6);
+    --shadow-glow: 0 0 30px hsl(220 55% 55% / 0.15);
 
-    --sidebar-background: 222 47% 7%;
-    --sidebar-foreground: 215 20% 65%;
-    --sidebar-primary: 226 70% 55%;
+    /* Sidebar - slightly lighter than background for contrast */
+    --sidebar-background: 222 28% 8%;
+    --sidebar-foreground: 220 15% 60%;
+    --sidebar-primary: 220 55% 55%;
     --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 217 33% 14%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 15%;
-    --sidebar-ring: 226 70% 55%;
+    --sidebar-accent: 220 25% 13%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 20% 14%;
+    --sidebar-ring: 220 55% 55%;
   }
 }
 
@@ -140,26 +145,26 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.01em;
   }
 
-  /* Custom scrollbar */
+  /* Premium scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
-    border-radius: 4px;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
-    border-radius: 4px;
+    background: hsl(var(--muted-foreground) / 0.2);
+    border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.3);
+    background: hsl(var(--muted-foreground) / 0.35);
   }
 }
 
@@ -194,6 +199,18 @@
     box-shadow: var(--shadow-glow);
   }
 
+  /* Subtle border enhancement for cards */
+  .border-subtle {
+    border-color: hsl(var(--border) / 0.8);
+  }
+
+  /* Elevated card style */
+  .card-elevated {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-sm);
+  }
+
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
@@ -219,7 +236,12 @@
   }
 
   .glass {
-    background: hsl(var(--card) / 0.8);
+    background: hsl(var(--card) / 0.85);
     backdrop-filter: blur(12px);
+  }
+
+  /* Tabular numbers for financial data */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 }

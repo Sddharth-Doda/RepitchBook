@@ -35,24 +35,24 @@ export default function DealResult() {
       {/* Main content */}
       <div className="flex-1 p-6 lg:p-8">
         {/* Header with Score */}
-        <div className="mb-8 rounded-2xl border border-border bg-gradient-surface p-8">
+        <div className="mb-8 rounded-xl border border-border bg-card p-8">
           <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start">
             <ScoreRing score={87} size="lg" />
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-2xl font-semibold text-foreground">
-                245 Park Avenue, Manhattan
+              <h1 className="text-xl font-semibold text-foreground">
+                Lodha Altamount, Lower Parel, Mumbai
               </h1>
-              <p className="mt-1 text-muted-foreground">Commercial Office • $4,200,000</p>
+              <p className="mt-1 text-sm text-muted-foreground">Commercial Office • ₹3,50,00,000</p>
               
               {/* Executive Summary */}
-              <div className="mt-6 rounded-lg border border-border bg-card/50 p-5">
-                <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+              <div className="mt-6 rounded-lg border border-border bg-muted/30 p-5">
+                <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-foreground">
                   <Lightbulb className="h-4 w-4 text-primary" />
                   AI Investment Summary
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   This property presents a <span className="font-medium text-success">strong investment opportunity</span> with 
-                  above-market rental yields and favorable location dynamics. The Manhattan commercial market shows 
+                  above-market rental yields and favorable location dynamics. The Mumbai commercial market shows 
                   sustained demand with 94% occupancy in the submarket. Projected 5-year IRR of 14.2% 
                   exceeds benchmark expectations. Key strengths include proximity to transit, recent capital improvements, 
                   and long-term lease commitments from investment-grade tenants.
@@ -112,14 +112,14 @@ export default function DealResult() {
         <div className="grid gap-6 lg:grid-cols-2">
           {/* ROI Projection Chart */}
           <div className="rounded-xl border border-border bg-card p-6">
-            <h3 className="text-base font-semibold text-foreground">ROI Projection</h3>
-            <p className="mt-1 text-sm text-muted-foreground">Expected annual returns over investment horizon</p>
+            <h3 className="text-sm font-semibold text-foreground">ROI Projection</h3>
+            <p className="mt-0.5 text-xs text-muted-foreground">Expected annual returns over investment horizon</p>
             <div className="mt-6 h-[200px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={roiProjection} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="roiGradient2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
+                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.25} />
                       <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                     </linearGradient>
                   </defs>
@@ -127,12 +127,12 @@ export default function DealResult() {
                     dataKey="year"
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }}
                   />
                   <YAxis
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }}
                     tickFormatter={(value) => `${value}%`}
                   />
                   <Tooltip
@@ -140,6 +140,7 @@ export default function DealResult() {
                       backgroundColor: "hsl(var(--popover))",
                       border: "1px solid hsl(var(--border))",
                       borderRadius: "8px",
+                      fontSize: "12px",
                     }}
                     formatter={(value: number) => [`${value}%`, "ROI"]}
                   />
@@ -157,8 +158,8 @@ export default function DealResult() {
 
           {/* Expense Breakdown */}
           <div className="rounded-xl border border-border bg-card p-6">
-            <h3 className="text-base font-semibold text-foreground">Cost Breakdown</h3>
-            <p className="mt-1 text-sm text-muted-foreground">Annual expense distribution</p>
+            <h3 className="text-sm font-semibold text-foreground">Cost Breakdown</h3>
+            <p className="mt-0.5 text-xs text-muted-foreground">Annual expense distribution</p>
             <div className="mt-6 flex items-center gap-8">
               <div className="h-[160px] w-[160px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -167,7 +168,7 @@ export default function DealResult() {
                       data={expenseBreakdown}
                       cx="50%"
                       cy="50%"
-                      innerRadius={45}
+                      innerRadius={50}
                       outerRadius={70}
                       paddingAngle={2}
                       dataKey="value"
@@ -184,12 +185,12 @@ export default function DealResult() {
                   <div key={item.name} className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div
-                        className="h-3 w-3 rounded-full"
+                        className="h-2.5 w-2.5 rounded-full"
                         style={{ backgroundColor: item.color }}
                       />
-                      <span className="text-sm text-muted-foreground">{item.name}</span>
+                      <span className="text-xs text-muted-foreground">{item.name}</span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">{item.value}%</span>
+                    <span className="text-xs font-medium tabular-nums text-foreground">{item.value}%</span>
                   </div>
                 ))}
               </div>
@@ -201,7 +202,7 @@ export default function DealResult() {
       {/* Sticky Action Panel */}
       <div className="hidden w-72 border-l border-border bg-card/50 p-6 lg:block">
         <div className="sticky top-24 space-y-4">
-          <h3 className="text-sm font-semibold text-foreground">Actions</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Actions</h3>
           
           <Button className="w-full justify-start gap-3 bg-gradient-primary text-primary-foreground hover:opacity-90">
             <Download className="h-4 w-4" />
@@ -220,10 +221,10 @@ export default function DealResult() {
 
           <div className="mt-8 rounded-lg border border-border bg-muted/30 p-4">
             <p className="text-xs font-medium text-foreground">Need a deeper analysis?</p>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="mt-1 text-[11px] text-muted-foreground leading-relaxed">
               Upgrade to Pro for comprehensive due diligence reports and market comparables.
             </p>
-            <Button size="sm" className="mt-3 w-full bg-primary/10 text-primary hover:bg-primary/20">
+            <Button size="sm" className="mt-3 w-full bg-primary/10 text-xs text-primary hover:bg-primary/20">
               Upgrade Plan
             </Button>
           </div>

@@ -1,6 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { TrendingUp, BarChart3, Shield, Zap, ArrowRight, CheckCircle2, Sparkles, Target, Building2, MapPin, PieChart, Home, Landmark, HelpCircle } from "lucide-react";
+import {
+  TrendingUp,
+  BarChart3,
+  Shield,
+  Zap,
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+  Target,
+  Building2,
+  MapPin,
+  PieChart,
+  Home,
+  Landmark,
+  HelpCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import {

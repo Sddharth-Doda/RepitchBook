@@ -13,21 +13,21 @@ export default function Dashboard() {
   return (
     <div className="p-6 lg:p-8">
       {/* Hero Section */}
-      <div className="mb-8 rounded-2xl border border-border bg-gradient-surface p-8">
+      <div className="mb-8 rounded-xl border border-border bg-card p-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
               Turn Property Data into{" "}
               <span className="text-gradient-primary">Investor Intelligence</span>
             </h1>
-            <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            <p className="mt-3 max-w-2xl text-sm text-muted-foreground leading-relaxed">
               AI-powered analysis for smarter real estate decisions. Evaluate deals, assess risk, 
               and generate institutional-grade investment reports in seconds.
             </p>
           </div>
           <Button 
             onClick={() => navigate("/analyze")}
-            className="h-12 bg-gradient-primary px-6 text-base font-medium text-primary-foreground shadow-glow hover:opacity-90"
+            className="h-11 bg-gradient-primary px-6 text-sm font-medium text-primary-foreground shadow-glow hover:opacity-90"
           >
             Analyze New Deal
           </Button>
@@ -56,8 +56,8 @@ export default function Dashboard() {
           />
           <MetricCard
             title="Total Portfolio Value"
-            value="$14.2M"
-            change="+$1.8M YTD"
+            value="₹11.8 Cr"
+            change="+₹1.5 Cr YTD"
             changeType="positive"
             icon={DollarSign}
           />

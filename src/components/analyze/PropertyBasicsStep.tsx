@@ -19,7 +19,7 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="location" className="text-foreground">Property Location</Label>
+        <Label htmlFor="location" className="text-sm text-foreground">Property Location</Label>
         <div className="relative">
           <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -27,15 +27,15 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
             placeholder="Enter address or neighborhood..."
             value={data.location}
             onChange={(e) => onChange({ location: e.target.value })}
-            className="h-12 border-border bg-muted/50 pl-10 text-foreground placeholder:text-muted-foreground focus:bg-muted"
+            className="h-11 border-border bg-muted/30 pl-10 text-sm text-foreground placeholder:text-muted-foreground focus:bg-muted/50"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="propertyType" className="text-foreground">Property Type</Label>
+        <Label htmlFor="propertyType" className="text-sm text-foreground">Property Type</Label>
         <Select value={data.propertyType} onValueChange={(value) => onChange({ propertyType: value })}>
-          <SelectTrigger className="h-12 border-border bg-muted/50 text-foreground">
+          <SelectTrigger className="h-11 border-border bg-muted/30 text-sm text-foreground">
             <SelectValue placeholder="Select property type" />
           </SelectTrigger>
           <SelectContent className="border-border bg-popover">
@@ -51,28 +51,28 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="purchasePrice" className="text-foreground">Purchase Price</Label>
+          <Label htmlFor="purchasePrice" className="text-sm text-foreground">Purchase Price</Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">₹</span>
             <Input
               id="purchasePrice"
               placeholder="0"
               value={data.purchasePrice}
               onChange={(e) => onChange({ purchasePrice: e.target.value })}
-              className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
+              className="h-11 border-border bg-muted/30 pl-7 text-sm tabular-nums text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="monthlyRent" className="text-foreground">Expected Monthly Rent</Label>
+          <Label htmlFor="monthlyRent" className="text-sm text-foreground">Expected Monthly Rent</Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">₹</span>
             <Input
               id="monthlyRent"
               placeholder="0"
               value={data.monthlyRent}
               onChange={(e) => onChange({ monthlyRent: e.target.value })}
-              className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
+              className="h-11 border-border bg-muted/30 pl-7 text-sm tabular-nums text-foreground placeholder:text-muted-foreground"
             />
           </div>
         </div>
@@ -80,8 +80,8 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <Label className="text-foreground">Investment Horizon</Label>
-          <span className="text-sm font-medium text-primary">{data.investmentHorizon} years</span>
+          <Label className="text-sm text-foreground">Investment Horizon</Label>
+          <span className="text-sm font-medium tabular-nums text-primary">{data.investmentHorizon} years</span>
         </div>
         <Slider
           value={[data.investmentHorizon]}
@@ -91,13 +91,13 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
           step={1}
           className="py-2"
         />
-        <div className="flex justify-between text-xs text-muted-foreground">
+        <div className="flex justify-between text-[11px] text-muted-foreground">
           <span>1 year</span>
           <span>15 years</span>
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground">
+      <p className="text-xs text-muted-foreground leading-relaxed">
         Our AI evaluates these signals to model investment strength and market positioning.
       </p>
     </div>

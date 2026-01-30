@@ -11,14 +11,14 @@ interface MetricCardProps {
 
 export function MetricCard({ title, value, change, changeType = "neutral", icon: Icon }: MetricCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-glow">
+    <div className="group relative overflow-hidden rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-primary/30">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm font-medium text-muted-foreground">{title}</p>
-          <p className="mt-2 text-2xl font-semibold tabular-nums text-foreground">{value}</p>
+          <p className="text-xs font-medium text-muted-foreground">{title}</p>
+          <p className="mt-2 text-xl font-semibold tabular-nums text-foreground">{value}</p>
           {change && (
             <p className={cn(
-              "mt-1 text-sm font-medium",
+              "mt-1 text-xs font-medium",
               changeType === "positive" && "text-success",
               changeType === "negative" && "text-destructive",
               changeType === "neutral" && "text-muted-foreground"
@@ -27,8 +27,8 @@ export function MetricCard({ title, value, change, changeType = "neutral", icon:
             </p>
           )}
         </div>
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-          <Icon className="h-5 w-5" />
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <Icon className="h-4 w-4" />
         </div>
       </div>
     </div>

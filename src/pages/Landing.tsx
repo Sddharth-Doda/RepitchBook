@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { TrendingUp, BarChart3, Shield, Zap, ArrowRight, CheckCircle2 } from "lucide-react";
+import { TrendingUp, BarChart3, Shield, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -12,7 +12,7 @@ const features = [
   {
     icon: BarChart3,
     title: "Market Intelligence",
-    description: "Real-time market data, rental yields, and demand trends across 200+ metropolitan areas.",
+    description: "Real-time market data, rental yields, and demand trends across 50+ Indian cities.",
   },
   {
     icon: Shield,
@@ -33,7 +33,7 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-primary shadow-glow">
@@ -43,10 +43,10 @@ export default function Landing() {
           </div>
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <Button variant="ghost" onClick={() => navigate("/auth?mode=signin")}>
+            <Button variant="ghost" onClick={() => navigate("/auth?mode=signin")} className="text-sm">
               Sign In
             </Button>
-            <Button onClick={() => navigate("/auth?mode=signup")} className="bg-gradient-primary shadow-glow">
+            <Button onClick={() => navigate("/auth?mode=signup")} className="bg-gradient-primary shadow-glow text-sm">
               Get Started
             </Button>
           </div>
@@ -66,7 +66,7 @@ export default function Landing() {
               Turn Property Data into{" "}
               <span className="text-gradient-primary">Investor Intelligence</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+            <p className="mt-6 text-lg text-muted-foreground sm:text-xl leading-relaxed">
               AI-powered deal analysis for smarter real estate decisions. Evaluate properties, 
               assess risk, and generate institutional-grade investment reports in seconds.
             </p>
@@ -74,7 +74,7 @@ export default function Landing() {
               <Button
                 size="lg"
                 onClick={() => navigate("/auth?mode=signup")}
-                className="h-12 gap-2 bg-gradient-primary px-8 text-base shadow-glow"
+                className="h-12 gap-2 bg-gradient-primary px-8 text-sm shadow-glow"
               >
                 Start Analyzing Deals
                 <ArrowRight className="h-4 w-4" />
@@ -83,7 +83,7 @@ export default function Landing() {
                 size="lg"
                 variant="outline"
                 onClick={() => navigate("/auth?mode=signin")}
-                className="h-12 px-8 text-base"
+                className="h-12 px-8 text-sm"
               >
                 Sign In to Dashboard
               </Button>
@@ -95,17 +95,17 @@ export default function Landing() {
       {/* Features Section */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="group rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
+                className="group rounded-xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/40"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                  <feature.icon className="h-6 w-6 text-primary" />
+                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10">
+                  <feature.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -113,23 +113,23 @@ export default function Landing() {
       </section>
 
       {/* Demo Accounts Section */}
-      <section className="border-t border-border bg-muted/30 py-16">
+      <section className="border-t border-border bg-muted/20 py-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-semibold text-foreground">Demo Access</h2>
-            <p className="mt-2 text-muted-foreground">
-              Try the platform with our demo accounts. Password for all: <code className="rounded bg-muted px-2 py-0.5 text-sm font-mono text-foreground">demo123</code>
+            <h2 className="text-xl font-semibold text-foreground">Demo Access</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Try the platform with our demo accounts. Password for all: <code className="rounded bg-muted px-2 py-0.5 text-xs font-mono text-foreground">demo123</code>
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {demoAccounts.map((account) => (
                 <div
                   key={account.email}
-                  className="rounded-xl border border-border bg-card p-4 text-left"
+                  className="rounded-lg border border-border bg-card p-4 text-left"
                 >
-                  <div className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  <div className="mb-1 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                     {account.role}
                   </div>
-                  <div className="font-mono text-sm text-foreground">{account.email}</div>
+                  <div className="font-mono text-xs text-foreground">{account.email}</div>
                 </div>
               ))}
             </div>
@@ -140,23 +140,23 @@ export default function Landing() {
       {/* Trust Section */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="rounded-2xl border border-border bg-gradient-surface p-12">
+          <div className="rounded-xl border border-border bg-card p-12">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold text-foreground">
+              <h2 className="text-2xl font-semibold text-foreground">
                 Institutional-Grade Analysis
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-muted-foreground">
                 The same analytical rigor used by top real estate investment firms, now accessible to every professional.
               </p>
               <div className="mt-10 grid gap-6 sm:grid-cols-3">
                 {[
-                  { value: "$14B+", label: "Deals Analyzed" },
+                  { value: "₹1,200 Cr+", label: "Deals Analyzed" },
                   { value: "97%", label: "Accuracy Rate" },
                   { value: "2.4s", label: "Avg. Analysis Time" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <div className="text-3xl font-bold text-gradient-primary">{stat.value}</div>
-                    <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-2xl font-bold text-gradient-primary">{stat.value}</div>
+                    <div className="mt-1 text-xs text-muted-foreground">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -169,16 +169,16 @@ export default function Landing() {
       <section className="border-t border-border py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-foreground">
+            <h2 className="text-2xl font-semibold text-foreground">
               Ready to make smarter investments?
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-muted-foreground">
               Join thousands of professionals using AI to gain a competitive edge.
             </p>
             <Button
               size="lg"
               onClick={() => navigate("/auth?mode=signup")}
-              className="mt-8 h-12 gap-2 bg-gradient-primary px-8 text-base shadow-glow"
+              className="mt-8 h-12 gap-2 bg-gradient-primary px-8 text-sm shadow-glow"
             >
               Get Started Free
               <ArrowRight className="h-4 w-4" />
@@ -195,8 +195,8 @@ export default function Landing() {
               <TrendingUp className="h-5 w-5 text-primary" />
               <span className="font-semibold text-foreground">REPitchBook AI</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              © 2024 REPitchBook. All rights reserved.
+            <p className="text-xs text-muted-foreground">
+              © 2026 REPitchBook. All rights reserved.
             </p>
           </div>
         </div>

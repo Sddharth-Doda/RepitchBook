@@ -206,6 +206,16 @@ export default function Landing() {
             <span className="text-base font-semibold tracking-tight text-foreground">REPitchBook</span>
           </motion.div>
           <div className="flex items-center gap-2">
+            <Button 
+              variant="ghost" 
+              onClick={() => {
+                const footer = document.querySelector('footer');
+                footer?.scrollIntoView({ behavior: 'smooth' });
+              }} 
+              className="h-9 px-4 text-sm font-medium text-muted-foreground hover:text-foreground"
+            >
+              Contact Us
+            </Button>
             <ThemeToggle />
             <Button 
               variant="ghost" 

@@ -2,6 +2,7 @@ import { Search, Bell, Command } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface TopNavProps {
   onOpenCommand: () => void;
@@ -34,6 +35,9 @@ export function TopNav({ onOpenCommand }: TopNavProps) {
             ⌘K
           </kbd>
         </Button>
+
+        {/* Theme Toggle */}
+        <ThemeToggle />
 
         {/* Notifications */}
         <Button

@@ -19,9 +19,9 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Demo accounts - hardcoded for hackathon
 const DEMO_ACCOUNTS: Record<string, { password: string; role: User["role"]; name: string }> = {
-  "investor@repitch.ai": { password: "demo123", role: "investor", name: "Alex Morgan" },
-  "broker@repitch.ai": { password: "demo123", role: "broker", name: "Jordan Smith" },
-  "analyst@repitch.ai": { password: "demo123", role: "analyst", name: "Taylor Chen" },
+  "investor@repitch.ai": { password: "demo123", role: "investor", name: "Vineet Kamle" },
+  "broker@repitch.ai": { password: "demo123", role: "broker", name: "Priya Sharma" },
+  "analyst@repitch.ai": { password: "demo123", role: "analyst", name: "Arjun Mehta" },
 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {

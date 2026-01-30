@@ -139,9 +139,55 @@ export default function Landing() {
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] animate-pulse-slow" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+        <motion.div 
+          className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.15, 0.1],
+            x: [0, 50, 0],
+            y: [0, -30, 0]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px]"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.1, 0.2, 0.1],
+            x: [0, -40, 0],
+            y: [0, 40, 0]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        />
+        
+        {/* Floating Particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/30 rounded-full"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              x: [0, i % 2 === 0 ? 20 : -20, 0],
+              opacity: [0.3, 0.6, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          />
+        ))}
       </div>
 
       {/* Navigation */}
@@ -201,11 +247,30 @@ export default function Landing() {
               variants={itemVariants}
               className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl lg:leading-[1.1]"
             >
-              Turn Property Data into
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                Turn Property Data into
+              </motion.span>
               <br />
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+              <motion.span 
+                className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] inline-block"
+                initial={{ opacity: 0, y: 20, backgroundPosition: "0% 50%" }}
+                animate={{ 
+                  opacity: 1, 
+                  y: 0,
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                }}
+                transition={{ 
+                  opacity: { duration: 0.6, delay: 0.5 },
+                  y: { duration: 0.6, delay: 0.5 },
+                  backgroundPosition: { duration: 5, repeat: Infinity, ease: "linear" }
+                }}
+              >
                 Investor Intelligence
-              </span>
+              </motion.span>
             </motion.h1>
             
             {/* Subheadline */}
@@ -263,22 +328,39 @@ export default function Landing() {
 
         {/* Hero Image with Product Preview Overlay */}
         <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.8, duration: 0.8, type: "spring", stiffness: 100 }}
           className="mt-20 mx-auto max-w-5xl"
         >
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20">
-            {/* Hero Real Estate Image */}
-            <div className="relative">
-              <img 
+          <motion.div 
+            className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20"
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Hero Real Estate Image with Ken Burns Effect */}
+            <div className="relative overflow-hidden">
+              <motion.img 
                 src={heroRealEstate} 
                 alt="Modern luxury real estate building" 
                 className="w-full h-[400px] md:h-[500px] object-cover"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
               />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              {/* Animated Gradient overlay */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"
+                animate={{ opacity: [0.8, 0.9, 0.8] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
               <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
+              
+              {/* Scanning Line Effect */}
+              <motion.div
+                className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+                animate={{ y: [0, 500, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+              />
             </div>
             
             {/* Floating Analytics Cards */}
@@ -286,25 +368,42 @@ export default function Landing() {
               <div className="grid md:grid-cols-3 gap-4">
                 {/* Property Card */}
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2, duration: 0.5 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-border/50 shadow-lg"
+                  initial={{ opacity: 0, y: 20, x: -20 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ delay: 1.2, duration: 0.6, type: "spring" }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-border/50 shadow-lg cursor-pointer"
                 >
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                    <motion.div 
+                      className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center"
+                      animate={{ rotate: [0, 5, -5, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
                       <Building2 className="w-5 h-5 text-primary" />
-                    </div>
+                    </motion.div>
                     <div>
                       <div className="text-sm font-medium text-foreground">Skyline Tower</div>
                       <div className="text-xs text-muted-foreground flex items-center gap-1">
-                        <MapPin className="w-3 h-3" /> Bandra, Mumbai
+                        <motion.span
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          <MapPin className="w-3 h-3" />
+                        </motion.span>
+                        Bandra, Mumbai
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-muted-foreground">Listed Price</span>
-                    <span className="font-semibold text-foreground">₹2.4 Cr</span>
+                    <motion.span 
+                      className="font-semibold text-foreground"
+                      animate={{ opacity: [1, 0.7, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      ₹2.4 Cr
+                    </motion.span>
                   </div>
                 </motion.div>
 
@@ -312,50 +411,105 @@ export default function Landing() {
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.4, duration: 0.5 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-success/30 shadow-lg"
+                  transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-success/30 shadow-lg cursor-pointer relative overflow-hidden"
                 >
-                  <div className="text-xs text-muted-foreground mb-2">AI Investment Score</div>
-                  <div className="flex items-end gap-2">
-                    <div className="text-3xl font-bold text-success">87</div>
-                    <div className="text-sm text-success/80 mb-1">/100</div>
-                  </div>
-                  <div className="mt-2 h-2 rounded-full bg-success/20 overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: "87%" }}
-                      transition={{ delay: 1.8, duration: 0.8 }}
-                    />
+                  {/* Shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-success/10 to-transparent -skew-x-12"
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                  />
+                  <div className="relative">
+                    <div className="text-xs text-muted-foreground mb-2">AI Investment Score</div>
+                    <div className="flex items-end gap-2">
+                      <motion.div 
+                        className="text-3xl font-bold text-success"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 1.8, type: "spring", stiffness: 200 }}
+                      >
+                        87
+                      </motion.div>
+                      <div className="text-sm text-success/80 mb-1">/100</div>
+                    </div>
+                    <div className="mt-2 h-2 rounded-full bg-success/20 overflow-hidden">
+                      <motion.div 
+                        className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full relative"
+                        initial={{ width: 0 }}
+                        animate={{ width: "87%" }}
+                        transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
+                      >
+                        <motion.div
+                          className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-r from-transparent to-white/30"
+                          animate={{ opacity: [0, 1, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, delay: 3 }}
+                        />
+                      </motion.div>
+                    </div>
                   </div>
                 </motion.div>
 
                 {/* ROI Metrics */}
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.6, duration: 0.5 }}
-                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-primary/30 shadow-lg"
+                  initial={{ opacity: 0, y: 20, x: 20 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ delay: 1.6, duration: 0.6, type: "spring" }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="rounded-xl bg-card/90 backdrop-blur-xl p-4 border border-primary/30 shadow-lg cursor-pointer"
                 >
                   <div className="text-xs text-muted-foreground mb-2">Projected Returns</div>
                   <div className="space-y-2">
-                    <div className="flex justify-between items-center">
+                    <motion.div 
+                      className="flex justify-between items-center"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 2 }}
+                    >
                       <span className="text-xs text-muted-foreground">5Y ROI</span>
-                      <span className="text-sm font-semibold text-primary">+42%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
+                      <motion.span 
+                        className="text-sm font-semibold text-primary"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: 2.5 }}
+                      >
+                        +42%
+                      </motion.span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex justify-between items-center"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 2.2 }}
+                    >
                       <span className="text-xs text-muted-foreground">Rental Yield</span>
                       <span className="text-sm font-semibold text-accent">3.8%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
+                    </motion.div>
+                    <motion.div 
+                      className="flex justify-between items-center"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 2.4 }}
+                    >
                       <span className="text-xs text-muted-foreground">Risk Level</span>
-                      <span className="text-sm font-semibold text-success">Low</span>
-                    </div>
+                      <motion.span 
+                        className="text-sm font-semibold text-success flex items-center gap-1"
+                        animate={{ opacity: [1, 0.6, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <motion.span
+                          className="w-2 h-2 rounded-full bg-success"
+                          animate={{ scale: [1, 1.3, 1] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        />
+                        Low
+                      </motion.span>
+                    </motion.div>
                   </div>
                 </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

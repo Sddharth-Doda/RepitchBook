@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useToast } from "@/hooks/use-toast";
 import logoImage from "@/assets/logo.jpg";
 
 const containerVariants = {
@@ -30,7 +31,15 @@ const itemVariants = {
 
 export default function Contact() {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We'll get back to you soon.",
+    });
+  };
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -134,7 +143,7 @@ export default function Contact() {
               className="p-8 rounded-2xl bg-card border border-border/50 shadow-xl"
             >
               <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>

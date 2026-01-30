@@ -4,7 +4,6 @@ import {
   BarChart3,
   Shield,
   Zap,
-  ArrowRight,
   CheckCircle2,
   Sparkles,
   Target,
@@ -311,21 +310,13 @@ export default function Landing() {
             {/* CTAs */}
             <motion.div 
               variants={itemVariants}
-              className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+              className="mt-10 flex items-center justify-center"
             >
-              <Button
-                size="lg"
-                onClick={() => navigate("/auth?mode=signup")}
-                className="group h-12 w-full sm:w-auto gap-2 px-8 text-sm font-medium bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-xl shadow-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]"
-              >
-                Start Free Trial
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
               <Button
                 size="lg"
                 variant="outline"
                 onClick={() => navigate("/auth?mode=signin")}
-                className="h-12 w-full sm:w-auto px-8 text-sm font-medium border-border/80 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300"
+                className="h-12 px-8 text-sm font-medium border-border/80 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300"
               >
                 Sign In to Dashboard
               </Button>

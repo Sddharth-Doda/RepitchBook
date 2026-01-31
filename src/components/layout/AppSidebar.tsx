@@ -57,16 +57,6 @@ export function AppSidebar() {
           })}
         </nav>
 
-        {/* Footer */}
-        <div className="border-t border-sidebar-border p-4">
-          <div className="rounded-lg bg-gradient-surface p-4">
-            <p className="text-xs font-medium text-foreground">Pro Plan</p>
-            <p className="mt-1 text-xs text-muted-foreground">47 analyses remaining</p>
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
-              <div className="h-full w-[70%] rounded-full bg-gradient-primary" />
-            </div>
-          </div>
-        </div>
       </div>
     </aside>
   );

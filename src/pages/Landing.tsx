@@ -367,15 +367,15 @@ export default function Landing() {
       </section>
 
     {/* Cities Coverage */}
-    <section className="py-16 border-y border-border/30 relative overflow-hidden">
+    <section className="py-12 border-y border-border/30 relative overflow-hidden">
       {/* Faded Background Image */}
       <div className="absolute inset-0">
         <img 
           src={citiesBg} 
           alt="" 
-          className="w-full h-full object-cover opacity-20 dark:opacity-15"
+          className="w-full h-full object-cover opacity-10 dark:opacity-[0.06]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background" />
       </div>
       
       <div className="relative mx-auto max-w-6xl px-6 z-10">

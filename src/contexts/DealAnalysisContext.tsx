@@ -30,15 +30,12 @@ const DealAnalysisContext = createContext<DealAnalysisContextType | undefined>(u
 
 const initialPropertyData: PropertyFormData = {
   city: "",
-  propertyType: "",
   purchasePrice: "",
   monthlyRent: "",
   investmentHorizon: 5,
 };
 
 const initialFinancialData: FinancialFormData = {
-  downPayment: "",
-  financingRate: 6.5,
   operatingCosts: "",
   appreciationRate: 3.5,
 };

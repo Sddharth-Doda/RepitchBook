@@ -4,8 +4,6 @@ import { Slider } from "@/components/ui/slider";
 
 interface FinancialInputsStepProps {
   data: {
-    downPayment: string;
-    financingRate: number;
     operatingCosts: string;
     appreciationRate: number;
   };
@@ -15,59 +13,22 @@ interface FinancialInputsStepProps {
 export function FinancialInputsStep({ data, onChange }: FinancialInputsStepProps) {
   return (
     <div className="space-y-6">
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="downPayment" className="text-foreground">Down Payment</Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
-            <Input
-              id="downPayment"
-              type="number"
-              placeholder="0"
-              value={data.downPayment}
-              onChange={(e) => onChange({ downPayment: e.target.value })}
-              className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
-              min="0"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground">Optional - for your reference</p>
+      <div className="space-y-2">
+        <Label htmlFor="operatingCosts" className="text-foreground">Annual Operating Costs *</Label>
+        <div className="relative">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
+          <Input
+            id="operatingCosts"
+            type="number"
+            placeholder="e.g., 200000"
+            value={data.operatingCosts}
+            onChange={(e) => onChange({ operatingCosts: e.target.value })}
+            className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
+            min="0"
+            required
+          />
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="operatingCosts" className="text-foreground">Annual Operating Costs *</Label>
-          <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
-            <Input
-              id="operatingCosts"
-              type="number"
-              placeholder="e.g., 200000"
-              value={data.operatingCosts}
-              onChange={(e) => onChange({ operatingCosts: e.target.value })}
-              className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
-              min="0"
-              required
-            />
-          </div>
-          <p className="text-xs text-muted-foreground">Maintenance, taxes, insurance, etc.</p>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <Label className="text-foreground">Financing Rate (APR)</Label>
-          <span className="text-sm font-medium text-primary">{data.financingRate.toFixed(1)}%</span>
-        </div>
-        <Slider
-          value={[data.financingRate]}
-          onValueChange={([value]) => onChange({ financingRate: value })}
-          min={3}
-          max={12}
-          step={0.1}
-          className="py-2"
-        />
-        <div className="flex justify-between text-xs text-muted-foreground">
-          <span>3%</span>
-          <span>12%</span>
-        </div>
+        <p className="text-xs text-muted-foreground">Maintenance, taxes, insurance, etc.</p>
       </div>
 
       <div className="space-y-4">
@@ -88,7 +49,7 @@ export function FinancialInputsStep({ data, onChange }: FinancialInputsStepProps
           <span>25%</span>
         </div>
         <p className="text-xs text-muted-foreground">
-          Backend supports appreciation rates between 0-25%
+          Expected annual property value appreciation (0-25%)
         </p>
       </div>
 

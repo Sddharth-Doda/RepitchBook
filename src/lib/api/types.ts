@@ -70,7 +70,6 @@ export interface ApiError {
  */
 export interface PropertyFormData {
   city: string;
-  propertyType: string;
   purchasePrice: string;
   monthlyRent: string;
   investmentHorizon: number;
@@ -80,8 +79,6 @@ export interface PropertyFormData {
  * Frontend form data structure for financial inputs step
  */
 export interface FinancialFormData {
-  downPayment: string;
-  financingRate: number;
   operatingCosts: string;
   appreciationRate: number;
 }
@@ -101,20 +98,8 @@ export function transformFormToApiInput(
   property: PropertyFormData,
   financial: FinancialFormData
 ): DealInput {
-  // Extract city from location (e.g., "Lower Parel, Mumbai" -> "mumbai")
-  const locationLower = property.city.toLowerCase();
-  let city = "mumbai"; // default
-  
-  if (locationLower.includes("bangalore") || locationLower.includes("bengaluru")) {
-    city = "bangalore";
-  } else if (locationLower.includes("hyderabad")) {
-    city = "hyderabad";
-  } else if (locationLower.includes("mumbai")) {
-    city = "mumbai";
-  }
-
   return {
-    city,
+    city: property.city.toLowerCase(),
     property_price: parseFloat(property.purchasePrice.replace(/,/g, "")) || 0,
     expected_rent: parseFloat(property.monthlyRent.replace(/,/g, "")) || 0,
     annual_costs: parseFloat(financial.operatingCosts.replace(/,/g, "")) || 0,

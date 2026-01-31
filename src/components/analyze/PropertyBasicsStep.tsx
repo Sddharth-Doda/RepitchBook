@@ -7,7 +7,6 @@ import { MapPin, AlertCircle } from "lucide-react";
 interface PropertyBasicsStepProps {
   data: {
     city: string;
-    propertyType: string;
     purchasePrice: string;
     monthlyRent: string;
     investmentHorizon: number;
@@ -26,7 +25,7 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="city" className="text-sm text-foreground">City</Label>
+        <Label htmlFor="city" className="text-sm text-foreground">City *</Label>
         <div className="relative">
           <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none z-10" />
           <Select value={data.city} onValueChange={(value) => onChange({ city: value })}>
@@ -46,23 +45,6 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
           <AlertCircle className="h-3 w-3" />
           Currently supporting Mumbai, Bangalore, and Hyderabad
         </p>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="propertyType" className="text-sm text-foreground">Property Type</Label>
-        <Select value={data.propertyType} onValueChange={(value) => onChange({ propertyType: value })}>
-          <SelectTrigger className="h-11 border-border bg-muted/30 text-sm text-foreground">
-            <SelectValue placeholder="Select property type" />
-          </SelectTrigger>
-          <SelectContent className="border-border bg-popover">
-            <SelectItem value="multifamily">Multifamily</SelectItem>
-            <SelectItem value="commercial">Commercial</SelectItem>
-            <SelectItem value="retail">Retail</SelectItem>
-            <SelectItem value="office">Office</SelectItem>
-            <SelectItem value="industrial">Industrial</SelectItem>
-            <SelectItem value="mixed-use">Mixed Use</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
@@ -102,7 +84,7 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <Label className="text-sm text-foreground">Investment Horizon (Loan Years)</Label>
+          <Label className="text-sm text-foreground">Investment Horizon (Loan Years) *</Label>
           <span className="text-sm font-medium tabular-nums text-primary">{data.investmentHorizon} years</span>
         </div>
         <Slider

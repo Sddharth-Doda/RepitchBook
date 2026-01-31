@@ -67,17 +67,6 @@ export default function DealResult() {
     return cityMap[city.toLowerCase()] || city;
   };
 
-  const getPropertyTypeLabel = (type: string) => {
-    const typeMap: Record<string, string> = {
-      multifamily: "Multifamily",
-      commercial: "Commercial",
-      retail: "Retail",
-      office: "Office",
-      industrial: "Industrial",
-      "mixed-use": "Mixed Use",
-    };
-    return typeMap[type] || type || "Property";
-  };
 
   const handleDownloadReport = () => {
     const doc = new jsPDF();
@@ -114,7 +103,7 @@ export default function DealResult() {
     doc.setTextColor(0, 0, 0);
 
     // Property Info
-    addCenteredText(`${getCityLabel(propertyData.city)} - ${getPropertyTypeLabel(propertyData.propertyType)}`, 14, true);
+    addCenteredText(`${getCityLabel(propertyData.city)} Investment Property`, 14, true);
     y += 2;
     doc.setTextColor(100, 100, 100);
     addCenteredText(`Listed Price: ${formatCurrency(parseFloat(propertyData.purchasePrice) || 0)}`, 10);
@@ -273,10 +262,10 @@ export default function DealResult() {
             <ScoreRing score={analysisResult.investment_score} size="lg" />
             <div className="flex-1 text-center lg:text-left">
               <h1 className="text-xl font-semibold text-foreground">
-                {getCityLabel(propertyData.city)} - {getPropertyTypeLabel(propertyData.propertyType)}
+                {getCityLabel(propertyData.city)} Investment Property
               </h1>
               <p className="mt-1 text-sm text-muted-foreground">
-                {getPropertyTypeLabel(propertyData.propertyType)} • {formatCurrency(parseFloat(propertyData.purchasePrice) || 0)}
+                {formatCurrency(parseFloat(propertyData.purchasePrice) || 0)}
               </p>
               
               {/* Executive Summary */}

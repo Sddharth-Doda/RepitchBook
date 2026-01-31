@@ -414,9 +414,9 @@ export default function Landing() {
         <img 
           src={workflowBg} 
           alt="" 
-          className="w-full h-full object-cover opacity-15 dark:opacity-[0.08]"
+          className="w-full h-full object-cover opacity-20 dark:opacity-[0.12]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/60" />
       </div>
       <div className="relative mx-auto max-w-4xl px-6">
         <motion.div 

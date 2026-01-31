@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Filter, Download } from "lucide-react";
+import { Search, Filter, Download, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuCheckboxItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 const reports = [
   {
@@ -75,6 +84,9 @@ const reports = [
   },
 ];
 
+const propertyTypes = ["Commercial", "Office", "Retail", "Mixed Use"];
+const riskLevels = ["Low", "Moderate", "High"];
+
 const getScoreColor = (score: number) => {
   if (score >= 80) return "text-success";
   if (score >= 60) return "text-primary";
@@ -98,10 +110,66 @@ const getRiskBadgeClass = (risk: string) => {
 export default function Reports() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedRisks, setSelectedRisks] = useState<string[]>([]);
 
-  const filteredReports = reports.filter((report) =>
-    report.property.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredReports = reports.filter((report) => {
+    const matchesSearch = report.property.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(report.type);
+    const matchesRisk = selectedRisks.length === 0 || selectedRisks.includes(report.risk);
+    return matchesSearch && matchesType && matchesRisk;
+  });
+
+  const handleTypeToggle = (type: string) => {
+    setSelectedTypes((prev) =>
+      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+    );
+  };
+
+  const handleRiskToggle = (risk: string) => {
+    setSelectedRisks((prev) =>
+      prev.includes(risk) ? prev.filter((r) => r !== risk) : [...prev, risk]
+    );
+  };
+
+  const clearFilters = () => {
+    setSelectedTypes([]);
+    setSelectedRisks([]);
+  };
+
+  const handleExportAll = () => {
+    // Create CSV content
+    const headers = ["Property", "Type", "Price", "Investment Score", "ROI", "Risk Level", "Date"];
+    const rows = filteredReports.map((report) => [
+      report.property,
+      report.type,
+      report.price,
+      report.score.toString(),
+      report.roi,
+      report.risk,
+      report.date,
+    ]);
+
+    const csvContent = [
+      headers.join(","),
+      ...rows.map((row) => row.map((cell) => `"${cell}"`).join(",")),
+    ].join("\n");
+
+    // Create and download file
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", `REPitchBook_Reports_${new Date().toISOString().split("T")[0]}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    toast.success(`Exported ${filteredReports.length} reports to CSV`);
+  };
+
+  const activeFilterCount = selectedTypes.length + selectedRisks.length;
 
   return (
     <div className="p-6 lg:p-8">
@@ -123,16 +191,121 @@ export default function Reports() {
           />
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" size="sm" className="gap-2 border-border text-xs text-muted-foreground hover:text-foreground">
-            <Filter className="h-3.5 w-3.5" />
-            Filter
-          </Button>
-          <Button variant="outline" size="sm" className="gap-2 border-border text-xs text-muted-foreground hover:text-foreground">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className={cn(
+                  "gap-2 border-border text-xs hover:text-foreground",
+                  activeFilterCount > 0 ? "text-primary border-primary/50" : "text-muted-foreground"
+                )}
+              >
+                <Filter className="h-3.5 w-3.5" />
+                Filter
+                {activeFilterCount > 0 && (
+                  <Badge variant="secondary" className="ml-1 h-5 w-5 rounded-full p-0 text-[10px]">
+                    {activeFilterCount}
+                  </Badge>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>Property Type</DropdownMenuLabel>
+              {propertyTypes.map((type) => (
+                <DropdownMenuCheckboxItem
+                  key={type}
+                  checked={selectedTypes.includes(type)}
+                  onCheckedChange={() => handleTypeToggle(type)}
+                >
+                  {type}
+                </DropdownMenuCheckboxItem>
+              ))}
+              <DropdownMenuSeparator />
+              <DropdownMenuLabel>Risk Level</DropdownMenuLabel>
+              {riskLevels.map((risk) => (
+                <DropdownMenuCheckboxItem
+                  key={risk}
+                  checked={selectedRisks.includes(risk)}
+                  onCheckedChange={() => handleRiskToggle(risk)}
+                >
+                  <span className={cn(
+                    risk === "Low" && "text-success",
+                    risk === "Moderate" && "text-warning",
+                    risk === "High" && "text-destructive"
+                  )}>
+                    {risk}
+                  </span>
+                </DropdownMenuCheckboxItem>
+              ))}
+              {activeFilterCount > 0 && (
+                <>
+                  <DropdownMenuSeparator />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={clearFilters}
+                    className="w-full justify-center text-xs text-muted-foreground"
+                  >
+                    Clear all filters
+                  </Button>
+                </>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="gap-2 border-border text-xs text-muted-foreground hover:text-foreground"
+            onClick={handleExportAll}
+          >
             <Download className="h-3.5 w-3.5" />
             Export All
           </Button>
         </div>
       </div>
+
+      {/* Active Filters Display */}
+      {activeFilterCount > 0 && (
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="text-xs text-muted-foreground">Active filters:</span>
+          {selectedTypes.map((type) => (
+            <Badge
+              key={type}
+              variant="secondary"
+              className="cursor-pointer gap-1 text-xs"
+              onClick={() => handleTypeToggle(type)}
+            >
+              {type}
+              <span className="ml-1">×</span>
+            </Badge>
+          ))}
+          {selectedRisks.map((risk) => (
+            <Badge
+              key={risk}
+              variant="secondary"
+              className={cn(
+                "cursor-pointer gap-1 text-xs",
+                risk === "Low" && "bg-success/10 text-success",
+                risk === "Moderate" && "bg-warning/10 text-warning",
+                risk === "High" && "bg-destructive/10 text-destructive"
+              )}
+              onClick={() => handleRiskToggle(risk)}
+            >
+              {risk} Risk
+              <span className="ml-1">×</span>
+            </Badge>
+          ))}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={clearFilters}
+            className="h-6 px-2 text-xs text-muted-foreground hover:text-foreground"
+          >
+            Clear all
+          </Button>
+        </div>
+      )}
 
       {/* Table */}
       <div className="rounded-xl border border-border bg-card">

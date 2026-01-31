@@ -18,6 +18,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import heroRealEstate from "@/assets/hero-real-estate.jpg";
 import logoImage from "@/assets/logo.jpg";
 import citiesBg from "@/assets/cities-bg.jpg";
+import workflowBg from "@/assets/workflow-bg.jpg";
 
 const features = [
   {
@@ -408,7 +409,15 @@ export default function Landing() {
 
     {/* How It Works Section - Timeline */}
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-transparent to-muted/20" />
+      {/* Faded Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={workflowBg} 
+          alt="" 
+          className="w-full h-full object-cover opacity-15 dark:opacity-[0.08]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+      </div>
       <div className="relative mx-auto max-w-4xl px-6">
         <motion.div 
           className="mx-auto max-w-2xl text-center mb-16"

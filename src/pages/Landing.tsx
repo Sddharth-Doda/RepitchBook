@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import heroRealEstate from "@/assets/hero-real-estate.jpg";
 import logoImage from "@/assets/logo.jpg";
+import citiesBg from "@/assets/cities-bg.jpg";
 
 const features = [
   {
@@ -366,8 +367,18 @@ export default function Landing() {
       </section>
 
     {/* Cities Coverage */}
-    <section className="py-12 border-y border-border/30">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="py-12 border-y border-border/30 relative overflow-hidden">
+      {/* Faded Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={citiesBg} 
+          alt="" 
+          className="w-full h-full object-cover opacity-10 dark:opacity-[0.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background" />
+      </div>
+      
+      <div className="relative mx-auto max-w-6xl px-6 z-10">
         <motion.div 
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
           initial={{ opacity: 0 }}
@@ -383,7 +394,7 @@ export default function Landing() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50 backdrop-blur-sm"
               >
                 <MapPin className="w-3 h-3 text-primary" />
                 <span className="text-sm font-medium text-foreground">{city.name}</span>

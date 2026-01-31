@@ -2,11 +2,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { MapPin } from "lucide-react";
+import { MapPin, AlertCircle } from "lucide-react";
 
 interface PropertyBasicsStepProps {
   data: {
-    location: string;
+    city: string;
     propertyType: string;
     purchasePrice: string;
     monthlyRent: string;
@@ -15,21 +15,37 @@ interface PropertyBasicsStepProps {
   onChange: (data: Partial<PropertyBasicsStepProps["data"]>) => void;
 }
 
+// Supported cities by backend
+const SUPPORTED_CITIES = [
+  { value: "mumbai", label: "Mumbai" },
+  { value: "bangalore", label: "Bangalore" },
+  { value: "hyderabad", label: "Hyderabad" },
+];
+
 export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="location" className="text-sm text-foreground">Property Location</Label>
+        <Label htmlFor="city" className="text-sm text-foreground">City</Label>
         <div className="relative">
-          <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            id="location"
-            placeholder="Enter address or neighborhood..."
-            value={data.location}
-            onChange={(e) => onChange({ location: e.target.value })}
-            className="h-11 border-border bg-muted/30 pl-10 text-sm text-foreground placeholder:text-muted-foreground focus:bg-muted/50"
-          />
+          <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none z-10" />
+          <Select value={data.city} onValueChange={(value) => onChange({ city: value })}>
+            <SelectTrigger className="h-11 border-border bg-muted/30 pl-10 text-sm text-foreground">
+              <SelectValue placeholder="Select city" />
+            </SelectTrigger>
+            <SelectContent className="border-border bg-popover">
+              {SUPPORTED_CITIES.map((city) => (
+                <SelectItem key={city.value} value={city.value}>
+                  {city.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
+        <p className="text-xs text-muted-foreground flex items-center gap-1">
+          <AlertCircle className="h-3 w-3" />
+          Currently supporting Mumbai, Bangalore, and Hyderabad
+        </p>
       </div>
 
       <div className="space-y-2">
@@ -51,28 +67,34 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="purchasePrice" className="text-sm text-foreground">Purchase Price</Label>
+          <Label htmlFor="purchasePrice" className="text-sm text-foreground">Purchase Price *</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">₹</span>
             <Input
               id="purchasePrice"
-              placeholder="0"
+              type="number"
+              placeholder="e.g., 35000000"
               value={data.purchasePrice}
               onChange={(e) => onChange({ purchasePrice: e.target.value })}
               className="h-11 border-border bg-muted/30 pl-7 text-sm tabular-nums text-foreground placeholder:text-muted-foreground"
+              min="0"
+              required
             />
           </div>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="monthlyRent" className="text-sm text-foreground">Expected Monthly Rent</Label>
+          <Label htmlFor="monthlyRent" className="text-sm text-foreground">Expected Monthly Rent *</Label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">₹</span>
             <Input
               id="monthlyRent"
-              placeholder="0"
+              type="number"
+              placeholder="e.g., 150000"
               value={data.monthlyRent}
               onChange={(e) => onChange({ monthlyRent: e.target.value })}
               className="h-11 border-border bg-muted/30 pl-7 text-sm tabular-nums text-foreground placeholder:text-muted-foreground"
+              min="0"
+              required
             />
           </div>
         </div>
@@ -80,20 +102,20 @@ export function PropertyBasicsStep({ data, onChange }: PropertyBasicsStepProps) 
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <Label className="text-sm text-foreground">Investment Horizon</Label>
+          <Label className="text-sm text-foreground">Investment Horizon (Loan Years)</Label>
           <span className="text-sm font-medium tabular-nums text-primary">{data.investmentHorizon} years</span>
         </div>
         <Slider
           value={[data.investmentHorizon]}
           onValueChange={([value]) => onChange({ investmentHorizon: value })}
           min={1}
-          max={15}
+          max={40}
           step={1}
           className="py-2"
         />
         <div className="flex justify-between text-[11px] text-muted-foreground">
           <span>1 year</span>
-          <span>15 years</span>
+          <span>40 years</span>
         </div>
       </div>
 

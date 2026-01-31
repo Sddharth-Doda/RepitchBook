@@ -19,28 +19,35 @@ export function FinancialInputsStep({ data, onChange }: FinancialInputsStepProps
         <div className="space-y-2">
           <Label htmlFor="downPayment" className="text-foreground">Down Payment</Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
             <Input
               id="downPayment"
+              type="number"
               placeholder="0"
               value={data.downPayment}
               onChange={(e) => onChange({ downPayment: e.target.value })}
               className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
+              min="0"
             />
           </div>
+          <p className="text-xs text-muted-foreground">Optional - for your reference</p>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="operatingCosts" className="text-foreground">Annual Operating Costs</Label>
+          <Label htmlFor="operatingCosts" className="text-foreground">Annual Operating Costs *</Label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₹</span>
             <Input
               id="operatingCosts"
-              placeholder="0"
+              type="number"
+              placeholder="e.g., 200000"
               value={data.operatingCosts}
               onChange={(e) => onChange({ operatingCosts: e.target.value })}
               className="h-12 border-border bg-muted/50 pl-8 text-foreground placeholder:text-muted-foreground"
+              min="0"
+              required
             />
           </div>
+          <p className="text-xs text-muted-foreground">Maintenance, taxes, insurance, etc.</p>
         </div>
       </div>
 
@@ -65,21 +72,24 @@ export function FinancialInputsStep({ data, onChange }: FinancialInputsStepProps
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <Label className="text-foreground">Expected Appreciation Rate</Label>
+          <Label className="text-foreground">Expected Appreciation Rate *</Label>
           <span className="text-sm font-medium text-primary">{data.appreciationRate.toFixed(1)}%</span>
         </div>
         <Slider
           value={[data.appreciationRate]}
           onValueChange={([value]) => onChange({ appreciationRate: value })}
           min={0}
-          max={10}
-          step={0.1}
+          max={25}
+          step={0.5}
           className="py-2"
         />
         <div className="flex justify-between text-xs text-muted-foreground">
           <span>0%</span>
-          <span>10%</span>
+          <span>25%</span>
         </div>
+        <p className="text-xs text-muted-foreground">
+          Backend supports appreciation rates between 0-25%
+        </p>
       </div>
 
       <div className="rounded-lg border border-border bg-muted/30 p-4">
